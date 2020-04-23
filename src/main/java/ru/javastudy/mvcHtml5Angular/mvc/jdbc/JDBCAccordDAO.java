@@ -1,6 +1,7 @@
 package ru.javastudy.mvcHtml5Angular.mvc.jdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.EncodedResource;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,6 +27,7 @@ import static org.springframework.jdbc.datasource.init.ScriptUtils.*;
  */
 @Repository
 public class JDBCAccordDAO {
+
 
     @Autowired
     DataSource dataAccordSource; //look to application-context.xml bean id='dataSource' definition
@@ -64,7 +66,7 @@ public class JDBCAccordDAO {
 
                 ClassPathResource resFile = new ClassPathResource("ao_dbschema.sql");
                 //System.out.println("ClassPathResource resFile = " + resFile);
-                ScriptUtils.executeSqlScript(connection,
+                executeSqlScript(connection,
                         new EncodedResource(resFile, StandardCharsets.UTF_8),
                         false, false,
                         DEFAULT_COMMENT_PREFIX, "/",
@@ -74,7 +76,7 @@ public class JDBCAccordDAO {
                         , "ao_add_rs1.sql", "ao_add_rs2.sql", "ao_add_s_tag.sql", "ao_add_stagtm.sql"
                         , "ao_add_tmesto.sql", "ao_add_tov.sql");
                 for (String cSqlFile : aSqlFile) {
-                    ScriptUtils.executeSqlScript(connection,
+                    executeSqlScript(connection,
                             new EncodedResource(new ClassPathResource(cSqlFile), StandardCharsets.UTF_8));
                 }
                 System.out.println("Run = " + "ao_dbschema.sql");

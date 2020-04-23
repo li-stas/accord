@@ -274,6 +274,7 @@
             <artifactId>querydsl-jpa</artifactId>
             <version>3.7.3</version>
         </dependency>
+        <!--https://stackoverflow.com/questions/4925901/classcastexception-while-parsing-xml-with-weblogic-->
         <dependency>
             <groupId>xml-apis</groupId>
             <artifactId>xml-apis</artifactId>
