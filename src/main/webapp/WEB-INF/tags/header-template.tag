@@ -68,8 +68,6 @@
                     <li> <a style="color: Green;" href="<c:url value="/login.html"/>"><spring:message code="navMenu.login"/></a> </li>
                 </c:if>
 
-
-
                 <c:if test="${isUSer}">
                     <li style="padding-top: 15px; padding-bottom: 15px; color: green">
                         <spring:message code="navMenu.existLogin"/>
@@ -79,10 +77,12 @@
                     </li>
                     <li> <a style="color: red;" href="<c:url value="/j_spring_security_logout"/>"><spring:message code="navMenu.logout"/></a> </li>
                 </c:if>
+
                 <c:url value="/about.html" var="about"/>
-                <li><a href="${about}"><spring:message code="navMenu.about"/></a></li>
+
                 <%--добавляет пунк в верхнем меню--%>
                 <li class="dropdown">
+                    <%--code="navMenu.accord" -> src\main\resources\locales>messages_ru.properties--%>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><spring:message code="navMenu.accord"/><b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
@@ -193,6 +193,7 @@
                         </li>
                     </ul>
                 </li>
+                <li><a href="${about}"><spring:message code="navMenu.about"/></a></li>
             </ul>
         </div>
 
