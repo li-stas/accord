@@ -26,7 +26,7 @@ public class RestAccordController {
     /** look to mvc-config.xml for <mvc:message-converters>. It can produce 'pretty' json response. */
     @RequestMapping(value = "/rest/getAccordOrderJSON", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
-    DBAccordOrdersJSON getAllDBLogsJSON() {
+    DBAccordOrdersJSON getAccordOrderJSON() {
         List<DBAccordOrderRs1AndRs2JSON> dbAccordOrderRs1AndRs2JSONList = null;
         try {
             dbAccordOrderRs1AndRs2JSONList = dbAccordOrderdService.queryOrderAccordRs1AndRs2JDBC2JSON(); //JDBC
@@ -36,6 +36,21 @@ public class RestAccordController {
         System.out.println(dbAccordOrderRs1AndRs2JSONList);
         DBAccordOrdersJSON dbAccordOrdersJSON = new DBAccordOrdersJSON();
         dbAccordOrdersJSON.setOrderList(dbAccordOrderRs1AndRs2JSONList);
+        return dbAccordOrdersJSON;
+    }
+
+    @RequestMapping(value = "/rest/getAccordOrderRs2InRs1JSON", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody
+    DBAccordOrdersJSON getAccordOrderRs2InRs1JSON() {
+        List<DBAccordOrderRs1> dbAccordOrderRs1List = null;
+        try {
+            dbAccordOrderRs1List = dbAccordOrderdService.queryOrderAccordRs2InRs1JDBC2JSON(); //JDBC
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(dbAccordOrderRs1List);
+        DBAccordOrdersJSON dbAccordOrdersJSON = new DBAccordOrdersJSON();
+        dbAccordOrdersJSON.setOrderList(dbAccordOrderRs1List);
         return dbAccordOrdersJSON;
     }
 }
