@@ -42,8 +42,8 @@ public class RestController {
     public @ResponseBody DBLogsJSON getAllDBLogsJSON() {
         List<DBLogJSON> dbLogsJSONList = null;
         try {
-            dbLogsJSONList = dbLogService.queryAllDBLogsJSON();  //JPA (Hibernate)
-//            dbLogsJSONList = dbLogService.queryAllDBLogsJDBCExampleJSON(); //JDBC
+            //dbLogsJSONList = dbLogService.queryAllDBLogsJSON();  //JPA (Hibernate)
+            dbLogsJSONList = dbLogService.queryAllDBLogsJDBCExampleJSON(); //JDBC
         } catch (Exception e) {
             e.printStackTrace();
         }

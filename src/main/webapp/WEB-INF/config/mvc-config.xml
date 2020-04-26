@@ -51,8 +51,10 @@
     <tx:annotation-driven/>
 
     <!-- ViewResolver bean config for mapping strings to jsp views -->
+    <!--Конфигурация bean-компонента ViewResolver для сопоставления строк с представлениями jsp-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
+        <!--Пример: имя логического представления 'showMessage' сопоставлено с '/WEB-INF/jsp/showMessage.jsp'-->
         <property name="order" value="1" />
         <property name="prefix" value="/WEB-INF/view/" />
         <property name="suffix" value=".jsp" />
@@ -83,6 +85,8 @@
 
     <mvc:view-controller path="/email.html" view-name="/email/email"/>
     <mvc:view-controller path="/rest.html" view-name="/rest/rest"/>
+    <mvc:view-controller path="/restaccord.html" view-name="/rest/restaccord"/>
+
     <mvc:view-controller path="/orm.html" view-name="/orm/orm"/>
     <mvc:view-controller path="/jstl.html" view-name="/jstl/jstl"/>
     <mvc:view-controller path="/scope.html" view-name="/scope/scope"/>

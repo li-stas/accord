@@ -65,6 +65,7 @@ public class RestUserModel {
 
     /**
      * specification says that inner class must be static. But it work fine without it.
+     * спецификация говорит, что внутренний класс должен быть статическим. Но без него все работает нормально.
      */
     public class Address {
         private String street;

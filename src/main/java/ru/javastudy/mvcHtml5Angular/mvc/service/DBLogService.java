@@ -4,11 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
-import ru.javastudy.mvcHtml5Angular.mvc.bean.DBLog;
 import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBLogJSON;
 import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBLogXML;
-import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBLogsJSON;
-import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBLogsXML;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

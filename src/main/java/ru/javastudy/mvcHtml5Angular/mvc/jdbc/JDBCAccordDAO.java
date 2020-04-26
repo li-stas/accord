@@ -32,7 +32,6 @@ public class JDBCAccordDAO {
     @Autowired
     DataSource dataAccordSource; //look to application-context.xml bean id='dataSource' definition
 
-
     private JdbcTemplate jdbcTemplate;
     private int noOfRecords;
 

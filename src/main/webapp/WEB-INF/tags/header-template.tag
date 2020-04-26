@@ -4,8 +4,9 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
-<c:url value="/jdbcrptord01.html" var="jdbcrptord01"/>
-<c:url value="/jdbcrpttov01.html" var="jdbcrpttov01"/>
+<c:url value="/jdbcrptord01.html" var="jdbcaccordrptord01"/>
+<c:url value="/jdbcrpttov01.html" var="jdbcaccordrpttov01"/>
+<c:url value="/restaccord.html" var="restaccord"/>
 
 <c:url value="/file.html" var="file"/>
 <c:url value="/jdbc.html" var="jdbc"/>
@@ -89,10 +90,13 @@
                             <%--переменная обявлена выше, которая ссылается на html -странищу.
                             принажатии ссылки вызывается mvc-config.xml
                             --%>
-                            <a href="${jdbcrptord01}">Отчет продаж Торговых агентов</a>
+                            <a href="${jdbcaccordrptord01}">Отчет продаж Торговых агентов</a>
                         </li>
                         <li>
-                            <a href="${jdbcrpttov01}">Отчет продаж Продукции</a>
+                            <a href="${jdbcaccordrpttov01}">Отчет продаж Продукции</a>
+                        </li>
+                        <li>
+                            <a href="${restaccord}">Rest Services JSON</a>
                         </li>
                     </ul>
                 </li>
