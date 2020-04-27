@@ -1,5 +1,12 @@
 package ru.javastudy.mvcHtml5Angular.mvc.rest.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
+import java.time.LocalDateTime;
+
 /**
  * струкутура с избыточными данными. повторяется шапка в каждой строке товара
  */
@@ -7,6 +14,9 @@ package ru.javastudy.mvcHtml5Angular.mvc.rest.model;
 public class DBAccordOrderRs1AndRs2JSON {
     // шапка заказа
     private int ttn;
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    private LocalDateTime dvp;
     private int tMesto;
     private int kta;
     // строки товар
@@ -23,6 +33,14 @@ public class DBAccordOrderRs1AndRs2JSON {
 
     public void setTtn(int ttn) {
         this.ttn = ttn;
+    }
+
+    public LocalDateTime getDvp() {
+        return dvp;
+    }
+
+    public void setDvp(LocalDateTime dvp) {
+        this.dvp = dvp;
     }
 
     public int getTMesto() {

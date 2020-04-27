@@ -50,6 +50,8 @@
         <!-- Spring Security -->
         <spring-security.version>4.0.4.RELEASE</spring-security.version>
 
+        <com.fasterxml.jackson>2.5.1</com.fasterxml.jackson>
+
     </properties>
 
     <dependencyManagement>
@@ -285,22 +287,22 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.5.1</version>
+            <version>${com.fasterxml.jackson}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>2.5.1</version>
+            <version>${com.fasterxml.jackson}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.5.1</version>
+            <version>${com.fasterxml.jackson}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>2.5.1</version>
+            <version>${com.fasterxml.jackson}</version>
         </dependency>
 
 
