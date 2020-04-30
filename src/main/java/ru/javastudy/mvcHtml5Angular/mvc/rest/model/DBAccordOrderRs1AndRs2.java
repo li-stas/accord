@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * струкутура с избыточными данными. повторяется шапка в каждой строке товара
  */
 
-public class DBAccordOrderRs1AndRs2JSON {
+public class DBAccordOrderRs1AndRs2 {
     // шапка заказа
     private int ttn;
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
@@ -24,7 +24,7 @@ public class DBAccordOrderRs1AndRs2JSON {
     private float kvp;
     private float zen;
 
-    public DBAccordOrderRs1AndRs2JSON() {
+    public DBAccordOrderRs1AndRs2() {
     }
 
     public int getTtn() {

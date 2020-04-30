@@ -100,7 +100,10 @@ TTN NUMERIC(6)  NOT NuLL,
 MnTov NUMERIC(7)  NOT NuLL,   
 KVP FLOAT  NOT NuLL,
 Zen FLOAT  NOT NuLL
--- ,CONSTRAINT rs2_ttn_fk FOREIGN KEY (ttn) REFERENCES ao_rs1 (ttn)
+,CONSTRAINT rs2_ttn_fk
+    FOREIGN KEY (ttn)
+    REFERENCES ao_rs1 (ttn)
+    ON DELETE CASCADE
 )
 /
 

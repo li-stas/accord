@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBAccordOrderRs1;
 import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBAccordOrderRs2;
-import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBAccordOrderRs1AndRs2JSON;
+import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBAccordOrderRs1AndRs2;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,17 +30,17 @@ public class DBAccordOrderdService {
     }
 
     //JdbcTemplate query with in method RowMapper example (JSON)
-    public List<DBAccordOrderRs1AndRs2JSON> queryOrderAccordRs1AndRs2JDBC2JSON() {
+    public List<DBAccordOrderRs1AndRs2> queryOrderAccordRs1AndRs2JDBC2JSON() {
         System.out.println("DBAccordOrderdService queryOrderAccordRs1AndRs2JDBC2JSON() is called");
         final String querySQL =
                 "SELECT rs1.ttn, dvp, TMesto, kta, MnTov, kvp, Zen"
                 + " FROM AO_RS1 rs1, AO_rs2 rs2"
                 + " WHERE rs1.ttn = rs2.ttn and kta = 364";
-        List <DBAccordOrderRs1AndRs2JSON> dbAccordOrderRs1AndRs2JSONs
-                = jdbcTemplate.query(querySQL, new RowMapper<DBAccordOrderRs1AndRs2JSON>() {
+        List <DBAccordOrderRs1AndRs2> dbAccordOrderRs1AndRs2s
+                = jdbcTemplate.query(querySQL, new RowMapper<DBAccordOrderRs1AndRs2>() {
             @Override
-            public DBAccordOrderRs1AndRs2JSON mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-                DBAccordOrderRs1AndRs2JSON recordRs1AndRs2 = new DBAccordOrderRs1AndRs2JSON();
+            public DBAccordOrderRs1AndRs2 mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+                DBAccordOrderRs1AndRs2 recordRs1AndRs2 = new DBAccordOrderRs1AndRs2();
                 recordRs1AndRs2.setTtn(resultSet.getInt("TTN"));
                 recordRs1AndRs2.setDvp(resultSet.getTimestamp("DVP").toLocalDateTime());
                 recordRs1AndRs2.setTMesto(resultSet.getInt("TMESTO"));
@@ -51,7 +51,7 @@ public class DBAccordOrderdService {
                 return recordRs1AndRs2;
             }
         });
-        return dbAccordOrderRs1AndRs2JSONs;
+        return dbAccordOrderRs1AndRs2s;
     }
 
     public List<DBAccordOrderRs1> queryOrderAccordRs2InRs1JDBC2JSON(int numKta) {
@@ -91,5 +91,19 @@ public class DBAccordOrderdService {
             }
         });
         return listRs2;
+    }
+
+    public int queryOrderRs1Delete(int numTtn) {
+        System.out.println("JDBCOrderRs1: delete called nomTtn=" + numTtn);
+
+        final String DELETE_SQL = "DELETE FROM AO_Rs1 WHERE ttn LIKE ?";
+        int result = jdbcTemplate.update(DELETE_SQL,new Object[]{numTtn});
+        System.out.println("result" + result);
+        if (result > 0) {
+            System.out.println("nomTtn is deleted: " + numTtn);
+            return result;
+        } else {
+            return result;
+        }
     }
 }
