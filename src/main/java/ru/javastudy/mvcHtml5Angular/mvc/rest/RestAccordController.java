@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import ru.javastudy.mvcHtml5Angular.mvc.jdbc.JDBCAccordDAO;
-import ru.javastudy.mvcHtml5Angular.mvc.rest.model.*;
+import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBAccordOrderRs1;
+import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBAccordOrderRs1AndRs2;
+import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBAccordOrdersJSONImpl;
 import ru.javastudy.mvcHtml5Angular.mvc.service.DBAccordOrderdService;
+import ru.javastudy.mvcHtml5Angular.mvc.service.JBDCAccordDAORs1;
 
 import java.util.List;
 
@@ -23,7 +25,8 @@ public class RestAccordController {
     /* src\main\java\ru\javastudy\mvcHtml5Angular\mvc\service\dbLogService.java
      * будет выбирать данные с таблиц
      */
-
+    @Autowired
+    private JBDCAccordDAORs1 dbAccordDAORs1;
     @Autowired
     private DBAccordOrderdService dbAccordOrderdService;
 
@@ -100,13 +103,23 @@ public class RestAccordController {
             @RequestParam(value = "ttn", defaultValue = "606060", required = false) Integer numTtn,
             @RequestParam(value = "tmesto", defaultValue = "606060", required = false) Integer numTMesto) {
 
-        System.out.printf("RestAccordController: delete called nomTtn = %d numTMesto = %d", numTtn, numTMesto);
+        System.out.printf("RestAccordController: update called nomTtn = %d numTMesto = %d\n", numTtn, numTMesto);
 
         int status = 200;
         int cntRec = 0;
 
         try {
-            cntRec = dbAccordOrderdService.queryOrderRs1Delete(numTtn);
+            // получение Шапок ном ТТН (она ОДНА, но в списке)
+            DBAccordOrderRs1 recRs1 = dbAccordDAORs1.findByTtn(numTtn);
+
+            int nOldTMesto = recRs1.getTMesto();
+            recRs1.setTMesto(numTMesto);
+            cntRec = dbAccordDAORs1.update(recRs1);
+
+            recRs1.setTMesto(nOldTMesto);
+            cntRec = dbAccordDAORs1.update(recRs1);
+
+
         } catch (Exception e) {
             status = 503;
             log.error(e.getMessage() + " Exception", e);

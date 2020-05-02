@@ -26,7 +26,6 @@ import static org.springframework.jdbc.datasource.init.ScriptUtils.*;
 @Repository
 public class JDBCAccordDAO {
 
-
     @Autowired
     DataSource dataAccordSource; //look to application-context.xml bean id='dataSource' definition
 
@@ -46,17 +45,9 @@ public class JDBCAccordDAO {
     }
 
     private void iniAOtable() throws SQLException {
-        final String QUERY_SQL = "select count(*) as cnt from user_tables where table_name like 'AO%'";
-        List<Integer> cntTable = jdbcTemplate.query(QUERY_SQL, new RowMapper<Integer>() {
-            @Override
-            public Integer mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-                Integer cntTable = resultSet.getInt(1);
-                return cntTable;
-            }
-        });
-        System.out.println("List<Integer> cntTable[0] = " + cntTable.get(0));
+        int cntTable = getCntTable();
 
-        if (cntTable.get(0) == 0) {
+        if (cntTable == 0) {
             Connection connection =  dataAccordSource.getConnection();
             aboutConn(connection);
             try {
@@ -82,6 +73,28 @@ public class JDBCAccordDAO {
                 connection.close();
             }
         }
+    }
+
+    private int getCntTable() {
+        Integer cntTable;
+        String sql = "select count(*) as cnt from user_tables where table_name like 'AO%'";
+        cntTable = jdbcTemplate.queryForObject(sql, new Object[] {}, Integer.class);
+        System.out.println("cntTable = " + cntTable);
+        return cntTable;
+    }
+
+    private int getCntTable01() {
+        final String QUERY_SQL = "select count(*) as cnt from user_tables where table_name like 'AO%'";
+        List<Integer> aCntTable = jdbcTemplate.query(QUERY_SQL, new RowMapper<Integer>() {
+            @Override
+            public Integer mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+                Integer cntTable = resultSet.getInt(1);
+                return cntTable;
+            }
+        });
+        System.out.println("List<Integer> cntTable[0] = " + aCntTable.get(0));
+        int cntTable = aCntTable.get(0);
+        return cntTable;
     }
 
     private void aboutConn(Connection connection) throws SQLException {
