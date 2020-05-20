@@ -1,4 +1,4 @@
-package ru.javastudy.mvcHtml5Angular.mvc.rest.model;
+package accord.mvc.rest.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

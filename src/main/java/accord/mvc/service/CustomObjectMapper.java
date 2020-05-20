@@ -1,4 +1,4 @@
-package ru.javastudy.mvcHtml5Angular.mvc.service;
+package accord.mvc.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

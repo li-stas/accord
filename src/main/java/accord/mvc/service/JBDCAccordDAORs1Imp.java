@@ -1,12 +1,11 @@
-package ru.javastudy.mvcHtml5Angular.mvc.service;
+package accord.mvc.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBAccordOrderRs1;
-import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBAccordOrderRs2;
+import accord.mvc.rest.model.DBAccordOrderRs1;
+import accord.mvc.rest.model.DBAccordOrderRs2;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -53,14 +52,23 @@ public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1 {
     }
 
     @Override
-    public void save(DBAccordOrderRs1 orderRs1) {
+    public int save(DBAccordOrderRs1 orderRs1) {
         System.out.println("JBDCAccordDAORs1: save is called");
         int numTtn = getSequence("ao_sq_rs1");
+        orderRs1.setTtn(numTtn);
 
         final String INSERT_SQL = "INSERT INTO ao_rs1 (ttn, DVP, TMesto, kta, prZ) " +
                 "VALUES (?, ?, ?, ?, ?)";
         int result = jdbcTemplate.update(INSERT_SQL,
-                  Timestamp.valueOf(orderRs1.getDvp()), orderRs1.getTMesto(), orderRs1.getKta() );
+                  orderRs1.getTtn(),
+                  Timestamp.valueOf(orderRs1.getDvp()), orderRs1.getTMesto(), orderRs1.getKta(),
+                orderRs1.getPrz());
+        if (result > 0) {
+            System.out.println("numTtn is update: " + orderRs1.getTtn());
+            return result;
+        } else {
+            return result;
+        }
     }
 
     @Override

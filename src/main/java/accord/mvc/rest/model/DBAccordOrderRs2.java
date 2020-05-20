@@ -1,4 +1,4 @@
-package ru.javastudy.mvcHtml5Angular.mvc.rest.model;
+package accord.mvc.rest.model;
 
 public class DBAccordOrderRs2 {
     // строки товар

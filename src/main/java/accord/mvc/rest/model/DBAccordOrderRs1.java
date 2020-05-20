@@ -1,4 +1,4 @@
-package ru.javastudy.mvcHtml5Angular.mvc.rest.model;
+package accord.mvc.rest.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -20,6 +20,7 @@ public  class DBAccordOrderRs1 {
     private LocalDateTime dvp;
     private int tMesto;
     private int kta;
+    private int prz;
     private List<DBAccordOrderRs2> listRs2;
 
 
@@ -58,6 +59,14 @@ public  class DBAccordOrderRs1 {
         this.kta = kta;
     }
 
+    public int getPrz() {
+        return prz;
+    }
+
+    public void setPrz(int prz) {
+        this.prz = prz;
+    }
+
     public void setListRs2(List<DBAccordOrderRs2> listRs2) {
         this.listRs2 = listRs2;
     }
@@ -72,6 +81,7 @@ public  class DBAccordOrderRs1 {
                 "ttn=" + ttn +
                 ", tMesto=" + tMesto +
                 ", kta=" + kta +
+                ", prZ=" + prz +
                 ", listRs2=" + listRs2 +
                 '}';
     }

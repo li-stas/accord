@@ -20,8 +20,8 @@
     <context:property-placeholder location="classpath:util.properties"/>
 
 
-    <!-- Accord XML Bean Definitions -->
-    <bean id="wlsdataAccordSource" class="org.springframework.jndi.JndiObjectFactoryBean" lazy-init="true">
+    <!-- wls Accord XML Bean Definitions -->
+    <bean id="wls_dataAccordSource" class="org.springframework.jndi.JndiObjectFactoryBean" lazy-init="true">
         <property name="jndiName" value="${jdbc.weblogic.jndiName}"/>
         <property name="resourceRef" value="true"/>
     </bean>

@@ -1,6 +1,6 @@
-package ru.javastudy.mvcHtml5Angular.mvc.service;
+package accord.mvc.service;
 
-import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBAccordOrderRs1;
+import accord.mvc.rest.model.DBAccordOrderRs1;
 
 public interface JBDCAccordDAORs2 {
     void save(DBAccordOrderRs1 dept);

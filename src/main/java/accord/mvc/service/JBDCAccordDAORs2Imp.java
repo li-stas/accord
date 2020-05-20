@@ -1,7 +1,7 @@
-package ru.javastudy.mvcHtml5Angular.mvc.service;
+package accord.mvc.service;
 
 import org.springframework.stereotype.Service;
-import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBAccordOrderRs1;
+import accord.mvc.rest.model.DBAccordOrderRs1;
 
 @Service
 public class JBDCAccordDAORs2Imp implements JBDCAccordDAORs2 {

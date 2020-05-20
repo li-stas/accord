@@ -1,13 +1,13 @@
-package ru.javastudy.mvcHtml5Angular.mvc.service;
+package accord.mvc.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
-import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBAccordOrderRs1;
-import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBAccordOrderRs2;
-import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBAccordOrderRs1AndRs2;
+import accord.mvc.rest.model.DBAccordOrderRs1;
+import accord.mvc.rest.model.DBAccordOrderRs2;
+import accord.mvc.rest.model.DBAccordOrderRs1AndRs2;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

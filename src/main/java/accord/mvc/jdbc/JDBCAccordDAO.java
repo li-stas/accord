@@ -1,4 +1,4 @@
-package ru.javastudy.mvcHtml5Angular.mvc.jdbc;
+package accord.mvc.jdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;

@@ -44,7 +44,7 @@
                         <a href="${getAccordOrderRs2InRs1JSON}?kta=364" class="list-group-item">Get Order Rs2InRs1</a>
                         <a href="${deleteAccordOrderRs1}?ttn=631184" class="list-group-item">Delete ttn=631184</a>
                         <a href="${updateAccordOrderRs1}?ttn=631242&tmesto=12621" class="list-group-item">update ttn=631242&tmesto=12621</a>
-                        <a href="${insertOrderRs1};dvp=2020-04-01;tmesto=31609;kta=559;prz=0" class="list-group-item">insert Order</a>
+                        <a href="${insertOrderRs1}?dvp=2020-04-01&tmesto=31609&kta=559&prz=0" class="list-group-item">insert Order</a>
                     </div>
                 </div>
 

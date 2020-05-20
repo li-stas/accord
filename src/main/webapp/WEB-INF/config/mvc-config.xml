@@ -24,6 +24,7 @@
          and also resolves @Autowired and @Qualifier -->
     <!--Этот тег будет сканировать ... а также решает-->
     <context:component-scan base-package="ru.javastudy.mvcHtml5Angular.mvc" />
+    <context:component-scan base-package="accord.mvc" />
 
     <!--
         mvc:annotation-driven configures Spring MVC annotations
@@ -45,11 +46,11 @@
         <mvc:message-converters>
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
                 <property name="objectMapper" ref="customObjectMapper"/>
-                <property name="prettyPrint" value="true" />
+                <property name="prettyPrint" value="true"/>
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
-    <bean id="customObjectMapper" class="ru.javastudy.mvcHtml5Angular.mvc.service.CustomObjectMapper"/>
+    <bean id="customObjectMapper" class="accord.mvc.service.CustomObjectMapper"/>
 
     <!-- activate @Transactional JPA annotation -->
     <tx:annotation-driven/>
@@ -86,6 +87,7 @@
     <mvc:view-controller path="/jdbc.html" view-name="/jdbc/jdbc"/>
     <mvc:view-controller path="/jdbcrptord01.html" view-name="/jdbc/jdbcrptord01"/>
     <mvc:view-controller path="/jdbcrpttov01.html" view-name="/jdbc/jdbcrpttov01"/>
+    <mvc:view-controller path="/apiorderaccord.html" view-name="/apiorder/apiorder01"/>
 
     <mvc:view-controller path="/email.html" view-name="/email/email"/>
     <mvc:view-controller path="/rest.html" view-name="/rest/rest"/>

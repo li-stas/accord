@@ -1,4 +1,4 @@
-package ru.javastudy.mvcHtml5Angular.mvc.rest;
+package accord.mvc.rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBAccordOrderRs1;
-import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBAccordOrderRs1AndRs2;
-import ru.javastudy.mvcHtml5Angular.mvc.rest.model.DBAccordOrdersJSONImpl;
-import ru.javastudy.mvcHtml5Angular.mvc.service.DBAccordOrderdService;
-import ru.javastudy.mvcHtml5Angular.mvc.service.JBDCAccordDAORs1;
+import accord.mvc.rest.model.DBAccordOrderRs1;
+import accord.mvc.rest.model.DBAccordOrderRs1AndRs2;
+import accord.mvc.rest.model.DBAccordOrdersJSONImpl;
+import accord.mvc.service.DBAccordOrderdService;
+import accord.mvc.service.JBDCAccordDAORs1;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -130,6 +132,36 @@ public class RestAccordController {
 
         return dbAccordOrdersJSONImpl;
     }
+    @RequestMapping(value = "/rest/insertOrderRs1", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody
+    DBAccordOrdersJSONImpl insertAccordOrderRs1(
+            @RequestParam(value = "dvp") String cDvp,
+            @RequestParam(value = "tmesto") Integer numTMesto,
+            @RequestParam(value = "kta") Integer numKta,
+            @RequestParam(value = "prz") Integer numPrz) {
 
+        System.out.printf("RestAccordController: insert called  " +
+                "cDvp = %s " +
+                "numTMesto = %d " +
+                "nomKta = %d prz = %d\n", cDvp, numTMesto, numKta, numPrz);
 
+        int status = 200;
+        int cntRec = 0;
+
+        cDvp += " 00:00";
+        DBAccordOrderRs1 recRs1 = new DBAccordOrderRs1();
+        recRs1.setDvp(LocalDateTime.parse(cDvp, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        recRs1.setTMesto(numTMesto);
+        recRs1.setKta(numKta);
+        recRs1.setPrz(numPrz);
+
+        System.out.println("recRs1 = " + recRs1);
+
+        cntRec = dbAccordDAORs1.save(recRs1);
+
+        System.out.println("cntRec = " + cntRec);
+        DBAccordOrdersJSONImpl dbAccordOrdersJSONImpl = new DBAccordOrdersJSONImpl(status, cntRec);
+
+        return dbAccordOrdersJSONImpl;
+    }
 }

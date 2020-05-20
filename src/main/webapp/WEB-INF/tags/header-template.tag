@@ -4,9 +4,12 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
+
+ <%--*.html - добавить в mvc-config.xml--%>
 <c:url value="/jdbcrptord01.html" var="jdbcaccordrptord01"/>
 <c:url value="/jdbcrpttov01.html" var="jdbcaccordrpttov01"/>
 <c:url value="/restaccord.html" var="restaccord"/>
+<c:url value="/apiorderaccord.html" var="apiorderaccord"/>
 
 <c:url value="/file.html" var="file"/>
 <c:url value="/jdbc.html" var="jdbc"/>
@@ -97,6 +100,9 @@
                         </li>
                         <li>
                             <a href="${restaccord}">Rest Services JSON</a>
+                        </li>
+                        <li>
+                            <a href="${apiorderaccord}">API Order Accord</a>
                         </li>
                     </ul>
                 </li>
