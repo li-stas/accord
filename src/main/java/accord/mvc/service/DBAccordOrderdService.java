@@ -76,15 +76,20 @@ public class DBAccordOrderdService {
         return dbAccordOrderRs2InR1JSONs;
     }
 
-    private List<DBAccordOrderRs2> queryOrderRs2(int nomTtn) {
+   public List<DBAccordOrderRs2> queryOrderRs2(int nomTtn) {
         System.out.println("DBAccordOrderdService queryOrderRs2() is called");
-        final String querySQL =  String.format("SELECT MnTov, kvp, Zen FROM AO_RS2 rs2 WHERE  ttn = %d",nomTtn);
+        final String querySQL =  String.format(
+                "SELECT rs2.MnTov, tov.Nat, kvp, Zen " +
+                "FROM AO_RS2 rs2, AO_TOV tov " +
+                "WHERE rs2.MnTov = tov.MnTov and ttn = %d" +
+                "ORDER BY tov.Nat",nomTtn);
         List<DBAccordOrderRs2> listRs2
                 = jdbcTemplate.query(querySQL, new RowMapper<DBAccordOrderRs2>() {
             @Override
             public DBAccordOrderRs2 mapRow(ResultSet resultSet, int rowNum) throws SQLException {
                 DBAccordOrderRs2 recordRs2 = new DBAccordOrderRs2();
                 recordRs2.setMnTov(resultSet.getInt("MNTOV"));
+                recordRs2.setNat(resultSet.getString("NAT"));
                 recordRs2.setKvp(resultSet.getFloat("KVP"));
                 recordRs2.setZen(resultSet.getFloat("ZEN"));
                 return recordRs2;
@@ -92,7 +97,6 @@ public class DBAccordOrderdService {
         });
         return listRs2;
     }
-
     public int queryOrderRs1Delete(int numTtn) {
         System.out.println("JDBCOrderRs1: delete called nomTtn=" + numTtn);
 
@@ -101,6 +105,19 @@ public class DBAccordOrderdService {
         System.out.println("result" + result);
         if (result > 0) {
             System.out.println("nomTtn is deleted: " + numTtn);
+            return result;
+        } else {
+            return result;
+        }
+    }
+    public int queryOrderRs2Delete(int numTtn, int nMnTov) {
+        System.out.printf("JDBCOrderRs2: delete called nomTtn=%d MnTov=%d\n", numTtn, nMnTov);
+
+        final String DELETE_SQL = "DELETE FROM AO_Rs2 WHERE ttn LIKE ? and MnTov LIKE ?";
+        int result = jdbcTemplate.update(DELETE_SQL, numTtn, nMnTov);
+        System.out.println("result = " + result);
+        if (result > 0) {
+            System.out.printf("  nomTtn=%d nMnTov=%d is deleted\n", numTtn, nMnTov);
             return result;
         } else {
             return result;

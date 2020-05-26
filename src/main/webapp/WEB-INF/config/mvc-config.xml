@@ -87,7 +87,7 @@
     <mvc:view-controller path="/jdbc.html" view-name="/jdbc/jdbc"/>
     <mvc:view-controller path="/jdbcrptord01.html" view-name="/jdbc/jdbcrptord01"/>
     <mvc:view-controller path="/jdbcrpttov01.html" view-name="/jdbc/jdbcrpttov01"/>
-    <mvc:view-controller path="/apiorderaccord.html" view-name="/apiorder/apiorder01"/>
+    <mvc:view-controller path="/accordorder.html" view-name="/accordorder/apiorder01"/>
 
     <mvc:view-controller path="/email.html" view-name="/email/email"/>
     <mvc:view-controller path="/rest.html" view-name="/rest/rest"/>

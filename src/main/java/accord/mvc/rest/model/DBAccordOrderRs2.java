@@ -1,12 +1,42 @@
 package accord.mvc.rest.model;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class DBAccordOrderRs2 {
     // строки товар
+    private int ttn;
     private int mnTov;
-    private float kvp;
-    private float zen;
+    private String nat;
+    private double kvp;
+    private double zen;
+    private double svp;
 
     public DBAccordOrderRs2() {
+    }
+
+    public DBAccordOrderRs2(int ttn, int mnTov, String nat, double kvp, double zen) {
+        this.ttn = ttn;
+        this.mnTov = mnTov;
+        this.nat = nat;
+        this.kvp = kvp;
+        this.zen = zen;
+    }
+
+    public int getTtn() {
+        return ttn;
+    }
+
+    public void setTtn(int ttn) {
+        this.ttn = ttn;
+    }
+
+    public String getNat() {
+        return nat;
+    }
+
+    public void setNat(String nat) {
+        this.nat = nat;
     }
 
     public int getMnTov() {
@@ -17,20 +47,27 @@ public class DBAccordOrderRs2 {
         this.mnTov = mnTov;
     }
 
-    public float getKvp() {
+    public double getKvp() {
         return kvp;
     }
 
-    public void setKvp(float kvp) {
+    public void setKvp(double kvp) {
         this.kvp = kvp;
+        this.svp = BigDecimal.valueOf(this.zen * this.kvp).setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 
-    public float getZen() {
+    public double getZen() {
         return zen;
     }
 
-    public void setZen(float zen) {
-        this.zen = zen;
+    public void setZen(double zen) {
+        this.zen = BigDecimal.valueOf(zen).setScale(2, RoundingMode.HALF_UP).doubleValue();
+        this.svp = BigDecimal.valueOf(this.zen * this.kvp).setScale(2, RoundingMode.HALF_UP).doubleValue();
+
+    }
+
+    public double getSvp() {
+        return svp;
     }
 
     @Override
@@ -39,6 +76,7 @@ public class DBAccordOrderRs2 {
                 "mnTov=" + mnTov +
                 ", kvp=" + kvp +
                 ", zen=" + zen +
+                ", svp=" + svp +
                 '}';
     }
 }

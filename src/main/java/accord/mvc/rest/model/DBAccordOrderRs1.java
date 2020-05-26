@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -18,6 +20,7 @@ public  class DBAccordOrderRs1 {
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime dvp;
+    private double sdv;
     private int tMesto;
     private int kta;
     private int prz;
@@ -67,8 +70,22 @@ public  class DBAccordOrderRs1 {
         this.prz = prz;
     }
 
+    public double getSdv() {
+        return sdv;
+    }
+
+    public void setSdv(double sdv) {
+        this.sdv = sdv;
+    }
+
     public void setListRs2(List<DBAccordOrderRs2> listRs2) {
         this.listRs2 = listRs2;
+        this.sdv = 0;
+        for (DBAccordOrderRs2 oRs2: listRs2) {
+            double svp = BigDecimal.valueOf(oRs2.getKvp() * oRs2.getZen()).setScale(2, RoundingMode.HALF_UP).doubleValue();
+            this.sdv = BigDecimal.valueOf(this.sdv + svp).setScale(2, RoundingMode.HALF_UP).doubleValue();
+
+        }
     }
 
     public List<DBAccordOrderRs2> getListRs2() {
@@ -86,6 +103,9 @@ public  class DBAccordOrderRs1 {
                 '}';
     }
 
+    public int gettMesto() {
+        return tMesto;
+    }
 }
 
 
