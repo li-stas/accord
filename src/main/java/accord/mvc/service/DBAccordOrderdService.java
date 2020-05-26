@@ -110,6 +110,7 @@ public class DBAccordOrderdService {
             return result;
         }
     }
+
     public int queryOrderRs2Delete(int numTtn, int nMnTov) {
         System.out.printf("JDBCOrderRs2: delete called nomTtn=%d MnTov=%d\n", numTtn, nMnTov);
 

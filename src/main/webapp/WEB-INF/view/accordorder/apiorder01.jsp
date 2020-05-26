@@ -12,12 +12,6 @@
         <c:url value="/accordOrdDel" var="accordOrdDel"/>
         <c:url value="/accordOrdFilt" var="accordOrdFilt"/>
         <c:url value="/accordOrdViewRs2" var="accordOrdViewRs2"/>
-        <%--
-        <c:url value="/jdbcInsert" var="jdbcInsert" />
-        <c:url value="/jdbcSelectLogs" var="jdbcSelectLogs" />
-        <c:url value="/jdbcDelete" var="jdbcDelete" />
-        <c:url value="/jdbcUpdate" var="jdbcUpdate" />
-        --%>
 
         <!-- Page Content -->
         <div class="container">

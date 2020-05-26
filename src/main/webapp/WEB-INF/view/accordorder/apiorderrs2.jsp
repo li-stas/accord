@@ -35,7 +35,7 @@
                     <div class="list-group">
 
                         <a href="index.html" class="list-group-item">Home</a>
-                        <a href="${accordOrRs2Add}" class="list-group-item">Добавить новую</a>
+                        <a href="${accordOrdRs2Add}?numTtn=${numTtn}" class="list-group-item">Добавить новую</a>
                         <a href="${accordOrdList}" class="list-group-item">Назад</a>
 
                     </div>
