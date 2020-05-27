@@ -193,7 +193,7 @@ public class ApiAccordController {
             @RequestParam(value = "cenPr", required = false) double nZen,
             @RequestParam(value = "nat", required = false) String cNat
     ) {
-        System.out.printf("CTRL accordOrdRs2dDel- numTtn=%d nMnTov=%d\n", numTtn, nMnTov);
+        System.out.printf("CTRL accordOrdChoiceTov- numTtn=%d nMnTov=%d\n", numTtn, nMnTov);
 
         DBAccordOrderRs2 oRs2 = new DBAccordOrderRs2(numTtn, nMnTov, cNat, 0, nZen);
 
@@ -212,7 +212,7 @@ public class ApiAccordController {
             @RequestParam(value = "zen", required = false) double nZen,
             @RequestParam(value = "nat", required = false) String cNat
     ) {
-        System.out.printf("CTRL_SaveRs2 - numTtn=%d nMnTov=%d cNat=%s nKvp=%.2f nZen=%.2f\n",
+        System.out.printf("CTRL_Rs2AddSave - numTtn=%d nMnTov=%d cNat=%s nKvp=%.2f nZen=%.2f\n",
                 numTtn, nMnTov, cNat, nKvp, nZen); //
 
         boolean result = false;

@@ -18,8 +18,8 @@ public class JBDCAccordDAORs2Imp implements JBDCAccordDAORs2 {
 
     @Override
     public int save(DBAccordOrderRs2 oRs2) {
-        System.out.println("JBDCAccordDAORs2 save is called");
-        System.out.println("ORs" + oRs2);
+        System.out.println("\nJBDCAccordDAORs2 INSERT INTO is called");
+        System.out.println("  ORs" + oRs2);
 
         final String UPDATE_SQL =
                 "INSERT INTO ao_rs2 (TTN,MnTov,KVP,Zen) VALUES (?,?,?,?)";
