@@ -1,4 +1,4 @@
-package accord.mvc.rest.model;
+package accord.mvc.model;
 
 import java.util.List;
 

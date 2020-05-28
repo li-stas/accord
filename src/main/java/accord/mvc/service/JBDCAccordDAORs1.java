@@ -1,7 +1,7 @@
 package accord.mvc.service;
 
-import accord.mvc.rest.model.DBAccordOrderRs1;
-import accord.mvc.rest.model.DBAccordOrderRs2;
+import accord.mvc.model.DBAccordOrderRs1;
+import accord.mvc.model.DBAccordOrderRs2;
 
 import java.util.List;
 

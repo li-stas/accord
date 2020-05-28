@@ -1,6 +1,6 @@
 package accord.mvc.service;
 
-import accord.mvc.rest.model.DBAccordOrderRs2;
+import accord.mvc.model.DBAccordOrderRs2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;

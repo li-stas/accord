@@ -8,6 +8,7 @@
     <jsp:body>
         <%--значение в контролере и имя переманной в здесь в мен--%>
         <c:url value="/accordOrdList" var="accordOrdList"/>
+        <c:url value="/accordOrdUpdate" var="accordOrdUpdate"/>
         <c:url value="/accordOrdAdd" var="accordOrdAdd"/>
         <c:url value="/accordOrdDel" var="accordOrdDel"/>
         <c:url value="/accordOrdFilt" var="accordOrdFilt"/>
@@ -79,7 +80,7 @@
                                                 </form>
                                             </td>
                                             <td>
-                                                <form action = "updateRs1.jsp" method="post">
+                                                <form action = "${accordOrdUpdate}" method="post">
                                                     <input type="hidden" name="numTtn" value="${oRs1.ttn}">
                                                     <input type="hidden" name="tMesto" value="${oRs1.tMesto}">
                                                     <input type="submit" value="Изменить" style="float:left">

@@ -1,4 +1,4 @@
-package accord.mvc.rest.model;
+package accord.mvc.model;
 
 public class DBAccordOrderTov {
     private int mnTov; //NUMERIC(7) NOT NuLL,

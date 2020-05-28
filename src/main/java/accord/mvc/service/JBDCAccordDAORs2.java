@@ -1,6 +1,6 @@
 package accord.mvc.service;
 
-import accord.mvc.rest.model.DBAccordOrderRs2;
+import accord.mvc.model.DBAccordOrderRs2;
 
 public interface JBDCAccordDAORs2 {
     int save(DBAccordOrderRs2 oRs2);

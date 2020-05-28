@@ -5,9 +5,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
-import accord.mvc.rest.model.DBAccordOrderRs1;
-import accord.mvc.rest.model.DBAccordOrderRs2;
-import accord.mvc.rest.model.DBAccordOrderRs1AndRs2;
+import accord.mvc.model.DBAccordOrderRs1;
+import accord.mvc.model.DBAccordOrderRs2;
+import accord.mvc.model.DBAccordOrderRs1AndRs2;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -56,7 +56,7 @@ public class DBAccordOrderdService {
 
     public List<DBAccordOrderRs1> queryOrderAccordRs2InRs1JDBC2JSON(int numKta) {
         System.out.println("DBAccordOrderdService queryOrderAccordRs2InRs1JDBC2JSON() is called");
-        final String querySQL = String.format("SELECT ttn, dvp, tMesto, kta FROM AO_RS1 rs1 WHERE  kta = %d", numKta);
+        final String querySQL = "SELECT ttn, dvp, tMesto, kta FROM AO_RS1 rs1 WHERE  kta = " + numKta;
         List <DBAccordOrderRs1> dbAccordOrderRs2InR1JSONs
                 = jdbcTemplate.query(querySQL, new RowMapper<DBAccordOrderRs1>() {
             @Override
@@ -68,7 +68,7 @@ public class DBAccordOrderdService {
                 recordRs1.setKta(resultSet.getInt("KTA"));
 
                 List<DBAccordOrderRs2> listRs2 = queryOrderRs2(resultSet.getInt("TTN"));
-                System.out.println("listRs2 = " + listRs2);
+                // System.out.println("listRs2 = " + listRs2);
                 recordRs1.setListRs2(listRs2);
                 return recordRs1;
             }
@@ -78,11 +78,11 @@ public class DBAccordOrderdService {
 
    public List<DBAccordOrderRs2> queryOrderRs2(int nomTtn) {
         System.out.println("DBAccordOrderdService queryOrderRs2() is called");
-        final String querySQL =  String.format(
-                "SELECT rs2.MnTov, tov.Nat, kvp, Zen " +
-                "FROM AO_RS2 rs2, AO_TOV tov " +
-                "WHERE rs2.MnTov = tov.MnTov and ttn = %d" +
-                "ORDER BY tov.Nat",nomTtn);
+        final String querySQL =
+                "SELECT rs2.MnTov, tov.Nat, kvp, Zen"
+                + " FROM AO_RS2 rs2, AO_TOV tov"
+                +" WHERE rs2.MnTov = tov.MnTov and ttn = " + nomTtn
+                +" ORDER BY tov.Nat";
         List<DBAccordOrderRs2> listRs2
                 = jdbcTemplate.query(querySQL, new RowMapper<DBAccordOrderRs2>() {
             @Override

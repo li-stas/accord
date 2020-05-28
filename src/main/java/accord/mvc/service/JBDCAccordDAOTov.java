@@ -1,6 +1,6 @@
 package accord.mvc.service;
 
-import accord.mvc.rest.model.DBAccordOrderTov;
+import accord.mvc.model.DBAccordOrderTov;
 
 import java.util.List;
 

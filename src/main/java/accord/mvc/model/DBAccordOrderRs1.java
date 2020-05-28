@@ -1,4 +1,4 @@
-package accord.mvc.rest.model;
+package accord.mvc.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import accord.mvc.rest.model.DBAccordOrderRs1;
-import accord.mvc.rest.model.DBAccordOrderRs2;
+import accord.mvc.model.DBAccordOrderRs1;
+import accord.mvc.model.DBAccordOrderRs2;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;

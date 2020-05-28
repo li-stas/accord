@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import accord.mvc.rest.model.DBAccordOrderRs1;
-import accord.mvc.rest.model.DBAccordOrderRs1AndRs2;
-import accord.mvc.rest.model.DBAccordOrdersJSONImpl;
+import accord.mvc.model.DBAccordOrderRs1;
+import accord.mvc.model.DBAccordOrderRs1AndRs2;
+import accord.mvc.model.DBAccordOrdersJSONImpl;
 import accord.mvc.service.DBAccordOrderdService;
 import accord.mvc.service.JBDCAccordDAORs1;
 
