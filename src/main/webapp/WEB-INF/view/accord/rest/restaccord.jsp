@@ -34,12 +34,7 @@
                 <!-- Sidebar Column -->
                 <div class="col-md-3">
                     <div class="list-group">
-
                         <a href="index.html" class="list-group-item">Home</a>
-                            <%--<a href="${getRestUsers}" class="list-group-item">Get Rest Users </a>
-                            <a href="${getRestPosts}" class="list-group-item">Get Rest Posts </a>
-                            <a href="${getPostsById}" class="list-group-item">Get Rest Posts By Id </a>
-                            <a href="${deletePostById}" class="list-group-item">Delete Post By Id </a>--%>
                         <a href="${getAccordOrderJSON}" class="list-group-item">Get Order Rs1&Rs2</a>
                         <a href="${getAccordOrderRs2InRs1JSON}?kta=364" class="list-group-item">Get Order Rs2InRs1</a>
                         <a href="${deleteAccordOrderRs1}?ttn=631184" class="list-group-item">Delete ttn=631184</a>

@@ -25,7 +25,7 @@ public class JDBCAccordController {
 
         //List<User> users =  jdbcAccordDAO.queryAllUsers();
 
-        final ModelAndView mv = new ModelAndView("/jdbc/jdbcrptord01");
+        final ModelAndView mv = new ModelAndView("/accord/jdbc/jdbcrptord01");
         mv.addObject("resultObject", "jdbcRptOrd01 report completed ");
         mv.addObject("aHead", aHead);
         mv.addObject("aRecList", aRecList);
@@ -52,7 +52,7 @@ public class JDBCAccordController {
 
         //List<User> users =  jdbcAccordDAO.queryAllUsers();
         System.out.printf("noOfPages=%d currentPage=%d noOfRecords=%d", noOfPages, page, noOfRecords);
-        final ModelAndView mv = new ModelAndView("/jdbc/jdbcrpttov01");
+        final ModelAndView mv = new ModelAndView("/accord/jdbc/jdbcrpttov01");
         mv.addObject("resultObject", "jdbcRptTov01 report completed ");
         mv.addObject("noOfPages", noOfPages);
         mv.addObject("currentPage", page);

@@ -101,7 +101,7 @@ public class DBAccordOrderdService {
         System.out.println("JDBCOrderRs1: delete called nomTtn=" + numTtn);
 
         final String DELETE_SQL = "DELETE FROM AO_Rs1 WHERE ttn LIKE ?";
-        int result = jdbcTemplate.update(DELETE_SQL,new Object[]{numTtn});
+        int result = jdbcTemplate.update(DELETE_SQL, numTtn);
         System.out.println("result" + result);
         if (result > 0) {
             System.out.println("nomTtn is deleted: " + numTtn);

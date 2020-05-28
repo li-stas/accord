@@ -26,7 +26,7 @@ public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1 {
     @Override
     public DBAccordOrderRs1 findByTtn(int numTtn) {
         System.out.println("JBDCAccordDAORs1 findByTtn is called");
-        final String querySQL = String.format("SELECT ttn, dvp, tMesto, kta FROM AO_RS1 rs1 WHERE  ttn = %d", numTtn);
+        final String querySQL = "SELECT ttn, dvp, tMesto, kta FROM AO_RS1 rs1 WHERE  ttn = " + numTtn;
         DBAccordOrderRs1 recRs1 = getDbAccordOrderRs1(querySQL);
         return recRs1;
     }
@@ -57,8 +57,7 @@ public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1 {
         int numTtn = getSequence("ao_sq_rs1");
         orderRs1.setTtn(numTtn);
 
-        final String INSERT_SQL = "INSERT INTO ao_rs1 (ttn, DVP, TMesto, kta, prZ) " +
-                "VALUES (?, ?, ?, ?, ?)";
+        final String INSERT_SQL = "INSERT INTO ao_rs1 (ttn, DVP, TMesto, kta, prZ) VALUES (?, ?, ?, ?, ?)";
         int result = jdbcTemplate.update(INSERT_SQL,
                   orderRs1.getTtn(),
                   Timestamp.valueOf(orderRs1.getDvp()), orderRs1.getTMesto(), orderRs1.getKta(),
@@ -105,7 +104,7 @@ public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1 {
     @Override
     public List<DBAccordOrderRs2> findRs2ByTtn(int numTtn) {
         System.out.println("DBAccordOrderdService queryOrderRs2() is called");
-        final String querySQL = String.format("SELECT MnTov, kvp, Zen FROM AO_RS2 rs2 WHERE  ttn = %d", numTtn);
+        final String querySQL = "SELECT MnTov, kvp, Zen FROM AO_RS2 rs2 WHERE  ttn =" + numTtn;
         List<DBAccordOrderRs2> listRs2
                 = jdbcTemplate.query(querySQL, new RowMapper<DBAccordOrderRs2>() {
             @Override
@@ -125,10 +124,12 @@ public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1 {
         return null;
     }
 
-    private Integer getSequence(String ao_sq_rs1) {
+    private Integer getSequence(String aoSqRs1) {
         Integer seq;
-        String sql = String.format("select %s.NEXTVAL from dual",ao_sq_rs1);
-        seq = jdbcTemplate.queryForObject(sql, new Object[] {}, Integer.class);
+        /*String sql = "select " + aoSqRs1 + ".NEXTVAL from dual";
+        seq = jdbcTemplate.queryForObject(sql, new Object[] {}, Integer.class);*/
+        String sql = "SELECT ?.NEXTVAL FROM dual";
+        seq = jdbcTemplate.queryForObject(sql, new Object[] {aoSqRs1}, Integer.class);
         return seq;
     }
 
