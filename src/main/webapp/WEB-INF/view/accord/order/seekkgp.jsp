@@ -32,6 +32,7 @@
                     <td>${oKGp.adr}</td>
                     <td>
                         <form action="${accordOrdChoiceKGp}" method="post">
+                            <input type="hidden" name="oRs1Code" value="${oRs1Code}">
                             <input type="hidden" name="numTtn" value="${numTtn}">
                             <input type="hidden" name="numKGp" value="${oKGp.kGp}">
                             <input type="hidden" name="cNameKPl" value="${cNameKPl}">

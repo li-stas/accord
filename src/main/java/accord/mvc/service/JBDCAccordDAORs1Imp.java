@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Repository
-public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1 {
+public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1  {
 
     private JdbcTemplate jdbcTemplate;
 
@@ -126,10 +126,10 @@ public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1 {
 
     private Integer getSequence(String aoSqRs1) {
         Integer seq;
-        /*String sql = "select " + aoSqRs1 + ".NEXTVAL from dual";
-        seq = jdbcTemplate.queryForObject(sql, new Object[] {}, Integer.class);*/
-        String sql = "SELECT ?.NEXTVAL FROM dual";
-        seq = jdbcTemplate.queryForObject(sql, new Object[] {aoSqRs1}, Integer.class);
+        String sql = "SELECT " + aoSqRs1 + ".NEXTVAL FROM dual";
+        seq = jdbcTemplate.queryForObject(sql, new Object[] {}, Integer.class);
+       /* String sql = "SELECT ?.NEXTVAL FROM dual";
+        seq = jdbcTemplate.queryForObject(sql, new Object[] {aoSqRs1}, Integer.class);*/
         return seq;
     }
 

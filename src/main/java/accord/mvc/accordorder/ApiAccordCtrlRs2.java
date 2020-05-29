@@ -2,9 +2,8 @@ package accord.mvc.accordorder;
 
 import accord.mvc.model.DBAccordOrderRs2;
 import accord.mvc.model.DBAccordOrderTov;
-import accord.mvc.service.DBAccordOrderdService;
-import accord.mvc.service.JBDCAccordDAORs2;
-import accord.mvc.service.JBDCAccordDAOTov;
+import accord.mvc.service.*;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -171,7 +170,7 @@ public class ApiAccordCtrlRs2 {
                 numTtn, nMnTov, cNat, nKvp, nZen); //
 
         boolean result = false;
-        //TODO проверка дублирования товар
+
         if (dbAccordDAORs2.save(new DBAccordOrderRs2(numTtn, nMnTov, cNat, nKvp, nZen)) > 0) {
             result = true;
             return accordOrdViewRs2(numTtn);

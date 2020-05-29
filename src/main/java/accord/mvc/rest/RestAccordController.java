@@ -112,14 +112,14 @@ public class RestAccordController {
 
         try {
             // получение Шапок ном ТТН (она ОДНА, но в списке)
-            DBAccordOrderRs1 recRs1 = dbAccordDAORs1.findByTtn(numTtn);
+            DBAccordOrderRs1 oRs1 = dbAccordDAORs1.findByTtn(numTtn);
 
-            int nOldTMesto = recRs1.getTMesto();
-            recRs1.setTMesto(numTMesto);
-            cntRec = dbAccordDAORs1.update(recRs1);
+            int nOldTMesto = oRs1.getTMesto();
+            oRs1.setTMesto(numTMesto);
+            cntRec = dbAccordDAORs1.update(oRs1);
 
-            recRs1.setTMesto(nOldTMesto);
-            cntRec = dbAccordDAORs1.update(recRs1);
+            oRs1.setTMesto(nOldTMesto);
+            cntRec = dbAccordDAORs1.update(oRs1);
 
 
         } catch (Exception e) {
@@ -149,15 +149,15 @@ public class RestAccordController {
         int cntRec = 0;
 
         cDvp += " 00:00";
-        DBAccordOrderRs1 recRs1 = new DBAccordOrderRs1();
-        recRs1.setDvp(LocalDateTime.parse(cDvp, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
-        recRs1.setTMesto(numTMesto);
-        recRs1.setKta(numKta);
-        recRs1.setPrz(numPrz);
+        DBAccordOrderRs1 oRs1 = new DBAccordOrderRs1();
+        oRs1.setDvp(LocalDateTime.parse(cDvp, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        oRs1.setTMesto(numTMesto);
+        oRs1.setKta(numKta);
+        oRs1.setPrz(numPrz);
 
-        System.out.println("recRs1 = " + recRs1);
+        System.out.println("oRs1 = " + oRs1);
 
-        cntRec = dbAccordDAORs1.save(recRs1);
+        cntRec = dbAccordDAORs1.save(oRs1);
 
         System.out.println("cntRec = " + cntRec);
         DBAccordOrdersJSONImpl dbAccordOrdersJSONImpl = new DBAccordOrdersJSONImpl(status, cntRec);

@@ -43,7 +43,7 @@
                             <a href="${accordOrdList}" class="list-group-item">Начать работу с Заявками</a>
                         </c:if>
                         <c:if test="${not (empty resultObject or resultObject == 'true' or resultObject == 'false')}">
-                            <a href="${accordOrdAdd}" class="list-group-item">Добавить новую</a>
+                            <a href="${accordOrdAdd}?numKGp=0&numKPl=0" class="list-group-item">Добавить новую</a>
                             <a href="${accordOrdFilt}" class="list-group-item">Фильтр</a>
                         </c:if>
 

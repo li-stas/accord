@@ -1,8 +1,6 @@
 package accord.mvc.service;
 
 import accord.mvc.model.DBAccordOrderKPl;
-import accord.mvc.model.DBAccordOrderKPl;
-import accord.mvc.model.DBAccordOrderTov;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

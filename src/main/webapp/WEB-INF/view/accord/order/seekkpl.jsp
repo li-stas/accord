@@ -32,6 +32,7 @@
                             <td>${oKPl.adr}</td>
                             <td>
                                 <form action="${accordOrdChoiceKPl}" method="post">
+                                    <input type="hidden" name="oRs1Code" value="${oRs1Code}">
                                     <input type="hidden" name="numTtn" value="${numTtn}">
                                     <input type="hidden" name="numKPl" value="${oKPl.kKL}">
                                     <input type="submit" value="Выбрать" style="float:left">
