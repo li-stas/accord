@@ -1,7 +1,5 @@
 package accord.mvc.model;
 
-import java.io.Serializable;
-
 public class DBAccordOrderKPl {
     private int kKL; // NUMERIC(7)  NOT NuLL,
     private String  nKL;// VARCHAR(90)  NOT NuLL,
