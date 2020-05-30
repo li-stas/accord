@@ -51,7 +51,7 @@
                     <p> После этого текста идет область контента только для зарегестрированных пользователей:
                   <security:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_USER', 'ROLE_SUPER_USER')"></p>
                       <b>Вы вошли как:</b> <security:authentication property="principal.username"/> с ролью: <b><security:authentication property="principal.authorities"/> </b>
-                      <br />
+                      <br/>
                       <span style="color: #568C00;"><security:authentication property="principal.username"/></span>
                       <a style="color: #568C00!important;" href="<c:url value="/j_spring_security_logout"/>">Logout</a>
                   </security:authorize>

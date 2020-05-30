@@ -57,12 +57,12 @@
     <br /><br />
     <p>Доступные роли:</p>
 
-    <b>ROLE_SUPER_USER</b><br />
-    Login:<span style="color: royalblue">superuser@outlook.com</span> Password: <span style="color: royalblue">12345</span> <br />
     <b>ROLE_ADMIN</b> <br />
     Login:<span style="color: royalblue">admin@gmail.com</span> Password: <span style="color: royalblue">12345</span> <br />
+    <b>ROLE_SUPER_USER</b><br />
+    Login:<span style="color: royalblue">login461@accord.com</span> Password: <span style="color: royalblue">12345</span> <br />
     <b>ROLE_USER</b> <br />
-    Login: <span style="color: royalblue">roleuser@outlook.com</span> Password: <span style="color: royalblue">12345</span>
+    Login: <span style="color: royalblue">login364@accord.com</span> Password: <span style="color: royalblue">12345</span>
 </form>
 </body>
 

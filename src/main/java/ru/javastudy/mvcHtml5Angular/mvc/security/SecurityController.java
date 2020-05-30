@@ -2,6 +2,8 @@ package ru.javastudy.mvcHtml5Angular.mvc.security;
 
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +31,17 @@ public class SecurityController {
     @RequestMapping(value="/userOrAdminCanCallSpEL", method=RequestMethod.GET)
     public ModelAndView userOrAdminCanCall() {
         System.out.println("SecurityController userOrAdminCanCall() is called with ROLE_ADMIN or ROLE_USER");
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+       /* if (principal instanceof UserDetails) {
+            String username = ((UserDetails)principal).getUsername();
+
+            System.out.printf(" username=%s \n",username);
+            System.out.println(((UserDetails)principal).toString());
+        } else {
+            String username = principal.toString();
+            System.out.printf(" username=%s not userdetali\n",username);
+        }
+*/
         return new ModelAndView("/security/profile");
     }
 

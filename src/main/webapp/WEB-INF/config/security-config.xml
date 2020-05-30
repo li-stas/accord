@@ -35,10 +35,14 @@
 
     </http>
 
-    <jdbc-user-service id="jdbcUserService" data-source-ref="dataSource"
+    <!--<jdbc-user-service id="jdbcUserService" data-source-ref="dataSource"
                        users-by-username-query="SELECT USERNAME, PASSWORD, ENABLED FROM USER WHERE USERNAME=?"
                        authorities-by-username-query="SELECT U.USERNAME, A.AUTHORITY
-        	 FROM AUTHORITIES A, USER U WHERE U.USERNAME = A.USERNAME AND U.USERNAME = ? "/>
+        	 FROM AUTHORITIES A, USER U WHERE U.USERNAME = A.USERNAME AND U.USERNAME = ? "/>-->
+    <jdbc-user-service id="jdbcUserService" data-source-ref="dataAccordSource"
+                       users-by-username-query="SELECT USERNAME, PASSWORD, ENABLED FROM AO_USER WHERE USERNAME=?"
+                       authorities-by-username-query="SELECT U.USERNAME, A.AUTHORITY
+        	 FROM AO_AUTHORITIES A, AO_USER U WHERE U.USERNAME = A.USERNAME AND U.USERNAME = ? "/>
 
     <authentication-manager alias="authenticationManager">
         <authentication-provider user-service-ref="jdbcUserService"/>

@@ -10,6 +10,7 @@
 <c:url value="/jdbcrpttov01.html" var="jdbcaccordrpttov01"/>
 <c:url value="/restaccord.html" var="restaccord"/>
 <c:url value="/accordorder.html" var="accordorder"/>
+<c:url value="/security/admin.html" var="admin" />
 
 <c:url value="/file.html" var="file"/>
 <c:url value="/jdbc.html" var="jdbc"/>
@@ -89,6 +90,7 @@
                     <%--code="navMenu.accord" -> src\main\resources\locales>messages_ru.properties--%>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><spring:message code="navMenu.accord"/><b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <c:if test="${isUSer}">
                         <li>
                             <%--переменная обявлена выше, которая ссылается на html -странищу.
                             принажатии ссылки вызывается mvc-config.xml
@@ -104,6 +106,13 @@
                         <li>
                             <a href="${accordorder}">API Order Accord</a>
                         </li>
+                        </c:if>
+
+                        <c:if test="${not isUSer}">
+                        <li>
+                            <a href="${admin}" class="list-group-item">SingIn (admin.jsp)</a>
+                        </li>
+                        </c:if>
                     </ul>
                 </li>
                 <li class="dropdown">

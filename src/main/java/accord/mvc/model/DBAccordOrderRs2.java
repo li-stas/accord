@@ -1,9 +1,10 @@
 package accord.mvc.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class DBAccordOrderRs2 {
+public class DBAccordOrderRs2 implements Serializable {
     // строки товар
     private int ttn;
     private int mnTov;

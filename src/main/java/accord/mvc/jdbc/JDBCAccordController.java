@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class JDBCAccordController {
     @Autowired
     JDBCAccordDAO jdbcAccordDAO;
 
+    @RolesAllowed(value={"ROLE_SUPER_USER"})
     @RequestMapping(value = "/jdbcRptOrd01", method = RequestMethod.GET)
     public ModelAndView jdbcRptOrd01() {
         System.out.println("JDBCAccordController jdbcRptOrd01() is called");
@@ -33,8 +35,7 @@ public class JDBCAccordController {
 
     }
 
-    //@RequestMapping(value = "/jdbcRptTov01.do/{page}", method = RequestMethod.GET)
-    //public ModelAndView jdbcRptTov01(@PathVariable(value="page") Integer pageGetParam) {
+    @RolesAllowed(value={"ROLE_SUPER_USER"})
     @RequestMapping(value = "/rpttov01.do", method = RequestMethod.GET)
     public ModelAndView jdbcRptTov01(@RequestParam(value = "page", required = false) Integer pageGetParam) {
         System.out.println("JDBCAccordController rpttov01.do is called");

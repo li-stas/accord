@@ -9,6 +9,7 @@ import accord.mvc.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,7 +23,9 @@ import java.util.List;
 @Controller
 public class ApiAccordController {
     private static final Logger log = LoggerFactory.getLogger(ApiAccordController.class);
-    private int numKtaRs1 = 364;
+
+    @Autowired
+    private AuthenticationFacade authenticationFacade;
     @Autowired
     private ConvertViaBase64 convertViaBase64;
     @Autowired
@@ -36,15 +39,22 @@ public class ApiAccordController {
     @Autowired
     private DBAccordOrderdService dbAccordOrderdService;
 
+    private int numKtaRs1; // = 364;
+
     @RequestMapping(value = "/accordOrdList", method = RequestMethod.GET)
-    public ModelAndView accordOrdList(
-            @RequestParam(value = "kta", defaultValue = "364", required = false) Integer numKta) {
-        System.out.printf("numKta=%d\n", numKta);
+    public ModelAndView accordOrdList() {
+        /*        @RequestParam(value = "kta", defaultValue = "364", required = false) Integer numKta*/
+        numKtaRs1 =  authenticationFacade.getNumKta();
+        System.out.printf("Call /accordOrdList numKta=%d\n", numKtaRs1);
+
+        Authentication authentication = authenticationFacade.getAuthentication();
+        System.out.printf(" username=%s numKta=%d\n", authentication.getName(), authenticationFacade.getNumKta());
+        System.out.printf(" authentication=%s\n", authentication.toString());
 
         List<String> aHead = Arrays.asList("Ном.заказа", "Дата", "Сумма, грн", "Тогр.место", "Товар", "Изменить", "Удалить");
 
         List<DBAccordOrderRs1> dbAccordOrderRs1List = null;
-        dbAccordOrderRs1List = dbAccordOrderdService.queryOrderAccordRs2InRs1JDBC2JSON(numKta); //JDBC
+        dbAccordOrderRs1List = dbAccordOrderdService.queryOrderAccordRs2InRs1JDBC2JSON(numKtaRs1); //JDBC
 
         boolean result = false;
         final ModelAndView mv = new ModelAndView("/accord/order/apiorder01");
@@ -312,7 +322,8 @@ public class ApiAccordController {
             cntRec = dbAccordDAORs1.update(oRs1);
         }
         // список Заявок ТА
-        return accordOrdList(numKtaRs1);
+        //return accordOrdList(numKtaRs1);
+        return accordOrdList();
     }
 
   /*  private Object oStrDeCode64( String base64String) {
