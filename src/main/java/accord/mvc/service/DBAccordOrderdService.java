@@ -1,16 +1,13 @@
 package accord.mvc.service;
 
+import accord.mvc.model.DBAccordOrderRs1;
+import accord.mvc.model.DBAccordOrderRs1AndRs2;
+import accord.mvc.model.DBAccordOrderRs2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
-import accord.mvc.model.DBAccordOrderRs1;
-import accord.mvc.model.DBAccordOrderRs2;
-import accord.mvc.model.DBAccordOrderRs1AndRs2;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,8 +15,8 @@ import java.util.List;
 
 @Service
 public class DBAccordOrderdService {
-    @PersistenceContext
-    private EntityManager entityManager;
+    /*@PersistenceContext
+    private EntityManager entityManager;*/
 
     /* or you can use JDBCTemplate instead JPA */
     private JdbcTemplate jdbcTemplate;
@@ -56,7 +53,9 @@ public class DBAccordOrderdService {
 
     public List<DBAccordOrderRs1> queryOrderAccordRs2InRs1JDBC2JSON(int numKta) {
         System.out.println("DBAccordOrderdService queryOrderAccordRs2InRs1JDBC2JSON() is called");
-        final String querySQL = "SELECT ttn, dvp, tMesto, kta FROM AO_RS1 rs1 WHERE  kta = " + numKta;
+        final String querySQL = "SELECT ttn, dvp, rs1.tMesto, tm.ntMesto, kta" +
+                " FROM AO_RS1 rs1, AO_TMesto tm" +
+                " WHERE rs1.tMesto = tm.tMesto and kta = " + numKta;
         List <DBAccordOrderRs1> dbAccordOrderRs2InR1JSONs
                 = jdbcTemplate.query(querySQL, new RowMapper<DBAccordOrderRs1>() {
             @Override
@@ -65,6 +64,7 @@ public class DBAccordOrderdService {
                 recordRs1.setTtn(resultSet.getInt("TTN"));
                 recordRs1.setDvp(resultSet.getTimestamp("DVP").toLocalDateTime());
                 recordRs1.setTMesto(resultSet.getInt("TMESTO"));
+                recordRs1.setNtMesto(resultSet.getString("NTMESTO"));
                 recordRs1.setKta(resultSet.getInt("KTA"));
 
                 List<DBAccordOrderRs2> listRs2 = queryOrderRs2(resultSet.getInt("TTN"));

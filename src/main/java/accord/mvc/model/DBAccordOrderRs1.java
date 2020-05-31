@@ -23,12 +23,21 @@ public  class DBAccordOrderRs1 implements Serializable {
     private LocalDateTime dvp;
     private double sdv;
     private int tMesto;
+    private String ntMesto;
     private int kta;
     private int prz;
     private List<DBAccordOrderRs2> listRs2;
 
 
     public DBAccordOrderRs1() {
+    }
+
+    public String getNtMesto() {
+        return ntMesto;
+    }
+
+    public void setNtMesto(String ntMesto) {
+        this.ntMesto = ntMesto;
     }
 
     public int getTtn() {
@@ -53,6 +62,10 @@ public  class DBAccordOrderRs1 implements Serializable {
 
     public void setTMesto(int tMesto) {
         this.tMesto = tMesto;
+    }
+
+    public int gettMesto() {
+        return tMesto;
     }
 
     public int getKta() {
@@ -104,9 +117,7 @@ public  class DBAccordOrderRs1 implements Serializable {
                 '}';
     }
 
-    public int gettMesto() {
-        return tMesto;
-    }
+
 }
 
 

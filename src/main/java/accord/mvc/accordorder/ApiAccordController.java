@@ -4,7 +4,7 @@ import accord.mvc.model.DBAccordOrderKGp;
 import accord.mvc.model.DBAccordOrderKPl;
 import accord.mvc.model.DBAccordOrderRs1;
 import accord.mvc.model.DBAccordOrderTMesto;
-import accord.mvc.model.converters.ConvertViaBase64;
+import accord.mvc.service.converters.ConvertViaBase64;
 import accord.mvc.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,9 +47,9 @@ public class ApiAccordController {
         numKtaRs1 =  authenticationFacade.getNumKta();
         System.out.printf("Call /accordOrdList numKta=%d\n", numKtaRs1);
 
-        Authentication authentication = authenticationFacade.getAuthentication();
+       /* Authentication authentication = authenticationFacade.getAuthentication();
         System.out.printf(" username=%s numKta=%d\n", authentication.getName(), authenticationFacade.getNumKta());
-        System.out.printf(" authentication=%s\n", authentication.toString());
+        System.out.printf(" authentication=%s\n", authentication.toString());*/
 
         List<String> aHead = Arrays.asList("Ном.заказа", "Дата", "Сумма, грн", "Тогр.место", "Товар", "Изменить", "Удалить");
 

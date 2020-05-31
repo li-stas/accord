@@ -72,7 +72,7 @@
                                             <td>${oRs1.ttn}</td>
                                             <td>${oRs1.dvp}</td>
                                             <td>${oRs1.sdv}</td>
-                                            <td>${oRs1.tMesto}</td>
+                                            <td>${oRs1.ntMesto}</td>
                                             <td>
                                                 <form action="${accordOrdViewRs2}" method="post">
                                                     <input type="hidden" name="numTtn" value="${oRs1.ttn}">

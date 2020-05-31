@@ -26,7 +26,9 @@ public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1  {
     @Override
     public DBAccordOrderRs1 findByTtn(int numTtn) {
         System.out.println("JBDCAccordDAORs1 findByTtn is called");
-        final String querySQL = "SELECT ttn, dvp, tMesto, kta FROM AO_RS1 rs1 WHERE  ttn = " + numTtn;
+        final String querySQL = "SELECT ttn, dvp, rs1.tMesto, tm.ntMesto, kta" +
+                " FROM AO_RS1 rs1, AO_TMesto tm" +
+                " WHERE rs1.tMesto = tm.tMesto and  ttn = " + numTtn;
         DBAccordOrderRs1 recRs1 = getDbAccordOrderRs1(querySQL);
         return recRs1;
     }
@@ -40,6 +42,7 @@ public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1  {
                 recordRs1.setTtn(resultSet.getInt("TTN"));
                 recordRs1.setDvp(resultSet.getTimestamp("DVP").toLocalDateTime());
                 recordRs1.setTMesto(resultSet.getInt("TMESTO"));
+                recordRs1.setNtMesto(resultSet.getString("NTMESTO"));
                 recordRs1.setKta(resultSet.getInt("KTA"));
 
                 List<DBAccordOrderRs2> listRs2 = findRs2ByTtn(resultSet.getInt("TTN"));
