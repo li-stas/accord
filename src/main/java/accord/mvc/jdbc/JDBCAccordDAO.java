@@ -89,9 +89,9 @@ public class JDBCAccordDAO {
         // Печать сообщения об успешном соединении
 
         System.out.println("\njdbc");
-        System.out.println("Connected to " + dma.getURL());
-        System.out.println("Driver " + dma.getDriverName());
-        System.out.println("Version " + dma.getDriverVersion());
+        System.out.println("  Connected to " + dma.getURL());
+        System.out.println("  Driver " + dma.getDriverName());
+        System.out.println("  Version " + dma.getDriverVersion());
     }
 
     public List<List<String>> queryRptOrder01() {
@@ -176,7 +176,6 @@ public class JDBCAccordDAO {
     public int getNoOfRecords() {
         return noOfRecords;
     }
-
 
 
 
