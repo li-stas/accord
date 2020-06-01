@@ -26,11 +26,11 @@ import static org.springframework.jdbc.datasource.init.ScriptUtils.*;
 @Repository
 public class JDBCAccordDAO {
 
-    @Autowired
-    DataSource dataAccordSource; //look to application-context.xml bean id='dataSource' definition
-
     private JdbcTemplate jdbcTemplate;
     private int noOfRecords;
+
+    @Autowired
+    DataSource dataAccordSource; //look to application-context.xml bean id='dataSource' definition
 
     /*https://www.baeldung.com/running-setup-logic-on-startup-in-spring*/
     @PostConstruct
@@ -83,19 +83,6 @@ public class JDBCAccordDAO {
         return cntTable;
     }
 
-    private int getCntTable01() {
-        final String QUERY_SQL = "select count(*) as cnt from user_tables where table_name like 'AO%'";
-        List<Integer> aCntTable = jdbcTemplate.query(QUERY_SQL, new RowMapper<Integer>() {
-            @Override
-            public Integer mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-                Integer cntTable = resultSet.getInt(1);
-                return cntTable;
-            }
-        });
-        System.out.println("List<Integer> cntTable[0] = " + aCntTable.get(0));
-        int cntTable = aCntTable.get(0);
-        return cntTable;
-    }
 
     private void aboutConn(Connection connection) throws SQLException {
         DatabaseMetaData dma = connection.getMetaData();
@@ -172,16 +159,22 @@ public class JDBCAccordDAO {
 
         // к-во записей всего макс
         final String QUERY_SQL1 = "SELECT COUNT(*) FROM AO_TOV ORDER BY Nat";
-        List<Integer> aMaxRecNo = jdbcTemplate.query(QUERY_SQL1, new RowMapper<Integer>() {
+        this.noOfRecords = jdbcTemplate.queryForObject(QUERY_SQL1, new Object[] {}, Integer.class);
+        /*List<Integer> aMaxRecNo = jdbcTemplate.query(QUERY_SQL1, new RowMapper<Integer>() {
             @Override
             public Integer mapRow(ResultSet resultSet, int rowNum) throws SQLException {
                 Integer nMaxRecNo = resultSet.getInt(1);
                 return nMaxRecNo;
             }
         });
-        this.noOfRecords = aMaxRecNo.get(0);
+        this.noOfRecords = aMaxRecNo.get(0);*/
+
         //System.out.println("aRecList = " + aRecList.toString());
         return aRecList;
+    }
+
+    public int getNoOfRecords() {
+        return noOfRecords;
     }
 
 
@@ -263,7 +256,5 @@ public class JDBCAccordDAO {
         }
     }
 
-    public int getNoOfRecords() {
-        return noOfRecords;
-    }
+
 }
