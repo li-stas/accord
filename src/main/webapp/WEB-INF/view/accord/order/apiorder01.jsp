@@ -67,7 +67,6 @@
                                 <c:if test="${not empty oListRec}">
 
                                     <c:forEach var="oRs1" items="${oListRec}">
-
                                         <tr>
                                             <td>${oRs1.ttn}</td>
                                             <td>${oRs1.dvp}</td>
