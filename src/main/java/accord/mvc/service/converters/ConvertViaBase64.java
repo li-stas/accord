@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import java.io.*;
 import java.util.Base64;
 
+/**
+ * https://sprosi.pro/questions/1011533/peredacha-obyekta-so-stranitsyi-jsp-obratno-v-servlet
+ */
 @Service
 public class ConvertViaBase64 {
     private static final Logger log = LoggerFactory.getLogger(ApiAccordController.class);

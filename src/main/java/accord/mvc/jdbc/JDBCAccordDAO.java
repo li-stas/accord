@@ -6,7 +6,9 @@ import org.springframework.core.io.support.EncodedResource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.stereotype.Repository;
+
 import ru.javastudy.mvcHtml5Angular.mvc.bean.DBLog;
 import ru.javastudy.mvcHtml5Angular.mvc.bean.User;
 
@@ -18,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.springframework.jdbc.datasource.init.ScriptUtils.*;
+//import org.springframework.jdbc.datasource.init.ScriptUtils.*;
 
 /**
  * Created for JavaStudy.ru on 24.02.2016.
@@ -44,27 +46,30 @@ public class JDBCAccordDAO {
         }
     }
 
+    /**
+     * https://www.codota.com/code/java/methods/org.springframework.jdbc.datasource.init.ScriptUtils/executeSqlScript
+     * @throws SQLException
+     */
     private void iniAOtable() throws SQLException {
+        Connection connection =  dataAccordSource.getConnection();
         int cntTable = getCntTable();
+        aboutConn(connection);
 
         if (cntTable == 0) {
-            Connection connection =  dataAccordSource.getConnection();
-            aboutConn(connection);
             try {
-
                 ClassPathResource resFile = new ClassPathResource("ao_dbschema.sql");
                 //System.out.println("ClassPathResource resFile = " + resFile);
-                executeSqlScript(connection,
+                ScriptUtils.executeSqlScript(connection,
                         new EncodedResource(resFile, StandardCharsets.UTF_8),
                         false, false,
-                        DEFAULT_COMMENT_PREFIX, "/",
-                        DEFAULT_BLOCK_COMMENT_START_DELIMITER, DEFAULT_BLOCK_COMMENT_END_DELIMITER
+                        ScriptUtils.DEFAULT_COMMENT_PREFIX, "/",
+                        ScriptUtils.DEFAULT_BLOCK_COMMENT_START_DELIMITER, ScriptUtils.DEFAULT_BLOCK_COMMENT_END_DELIMITER
                         );
                 List<String> aSqlFile = Arrays.asList("ao_add_user.sql", "ao_add_kgp.sql", "ao_add_kpl.sql"
                         , "ao_add_rs1.sql", "ao_add_rs2.sql", "ao_add_s_tag.sql", "ao_add_stagtm.sql"
                         , "ao_add_tmesto.sql", "ao_add_tov.sql");
                 for (String cSqlFile : aSqlFile) {
-                    executeSqlScript(connection,
+                    ScriptUtils.executeSqlScript(connection,
                             new EncodedResource(new ClassPathResource(cSqlFile), StandardCharsets.UTF_8));
                 }
                 System.out.println("Run = " + "ao_dbschema.sql");
@@ -88,11 +93,13 @@ public class JDBCAccordDAO {
         DatabaseMetaData dma = connection.getMetaData();
         // Печать сообщения об успешном соединении
 
-        System.out.println("\njdbc");
-        System.out.println("Connected to " + dma.getURL());
-        System.out.println("Driver " + dma.getDriverName());
-        System.out.println("Version " + dma.getDriverVersion());
+        System.out.println("\nJDBC - aboutConnect");
+        System.out.println("  Connected to " + dma.getURL());
+        System.out.println("  Driver " + dma.getDriverName());
+        System.out.println("  Version " + dma.getDriverVersion());
     }
+
+
 
     public List<List<String>> queryRptOrder01() {
         System.out.println("JDBCAccordExample: queryRptOrder01 is called");
@@ -200,7 +207,7 @@ public class JDBCAccordDAO {
     //JDBC TEMPLATE INSERT EXAMPLE
     public boolean insertLog(DBLog log) {
         System.out.println("JDBCAccordExample: log(final String log) is called");
-        final String INSERT_SQL = "INSERT INTO LOG (LOGSTRING) VALUES (?)";
+        final String INSERT_SQL = "INSERT INTO AO_LOG (LOGSTRING) VALUES (?)";
         jdbcTemplate.update(new PreparedStatementCreator() {
             public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
                 PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SQL);
@@ -214,7 +221,7 @@ public class JDBCAccordDAO {
     //JDBC TEMPLATE SELECT EXAMPLE
     public List<DBLog> queryAllLogs() {
         System.out.println("JDBCAccordExample: queryAllLogs() is called");
-        final String QUERY_SQL = "SELECT * FROM LOG ORDER BY IDLOG";
+        final String QUERY_SQL = "SELECT * FROM AO_LOG ORDER BY IDLOG";
         List<DBLog> dbLogList = this.jdbcTemplate.query(QUERY_SQL, new RowMapper<DBLog>() {
             public DBLog mapRow(ResultSet resulSet, int rowNum) throws SQLException {
                 System.out.println("Getting log: "+ rowNum + " content: " + resulSet.getString("LOGSTRING"));
@@ -232,7 +239,7 @@ public class JDBCAccordDAO {
     //JDBC TEMPLATE DELETE EXAMPLE
     public boolean deleteUSER(int iduser) {
         System.out.println("JDBCAccordExample: deleteUSER called");
-        final String DELETE_SQL = "DELETE FROM USER WHERE IDUSER LIKE ?";
+        final String DELETE_SQL = "DELETE FROM AO_USER WHERE IDUSER LIKE ?";
         int result = jdbcTemplate.update(DELETE_SQL,new Object[]{iduser});
         System.out.println("r" + result);
         if (result > 0) {
@@ -246,7 +253,7 @@ public class JDBCAccordDAO {
     //JDBC TEMPLATE UPDATE EXAMPLE
     public boolean updateUserEnable(User u, boolean enable)  {
         System.out.println("JDBCAccordExample: updateUserEnable called");
-        final String UPDATE_SQL = "UPDATE USER SET ENABLED = ? WHERE USERNAME = ?";
+        final String UPDATE_SQL = "UPDATE AO_USER SET ENABLED = ? WHERE USERNAME = ?";
         int result = jdbcTemplate.update(UPDATE_SQL,new Object[]{enable, u.getUsername()});
         if (result > 0) {
             System.out.println("User is updated: " + u.getUsername());
