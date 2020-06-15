@@ -74,51 +74,26 @@
 
     <!--Excel and PDF xml view configuration -->
     <!--disabling for jUnit test. -->
-    <bean class="org.springframework.web.servlet.view.XmlViewResolver">
+    <!--<bean class="org.springframework.web.servlet.view.XmlViewResolver">
         <property name="order" value="0" />
         <property name="location" value="/WEB-INF/config/excel-pdf-config.xml"/>
-    </bean>
+    </bean>-->
 
     <mvc:view-controller path="/" view-name="/index"/>
     <mvc:view-controller path="/index.html" view-name="/index"/>
     <mvc:view-controller path="/login.html" view-name="/form/login"/>
-    <mvc:view-controller path="/about.html" view-name="/about/about"/>
-    <mvc:view-controller path="/file.html" view-name="/file/file"/>
 
-    <mvc:view-controller path="/jdbc.html" view-name="/jdbc/jdbc"/>
     <mvc:view-controller path="/jdbcrptord01.html" view-name="/accord/jdbc/jdbcrptord01"/>
     <mvc:view-controller path="/jdbcrpttov01.html" view-name="/accord/jdbc/jdbcrpttov01"/>
     <mvc:view-controller path="/accordorder.html" view-name="/accord/order/apiorder01"/>
 
-    <mvc:view-controller path="/email.html" view-name="/email/email"/>
-    <mvc:view-controller path="/rest.html" view-name="/rest/rest"/>
+
     <mvc:view-controller path="/restaccord.html" view-name="/accord/rest/restaccord"/>
 
-    <mvc:view-controller path="/orm.html" view-name="/orm/orm"/>
-    <mvc:view-controller path="/jstl.html" view-name="/jstl/jstl"/>
-    <mvc:view-controller path="/scope.html" view-name="/scope/scope"/>
-    <mvc:view-controller path="/cookie.html" view-name="/cookie/cookieView"/>
+
     <mvc:view-controller path="/security.html" view-name="/security/security"/>
     <mvc:view-controller path="/security/admin.html" view-name="/security/admin"/>
 
-    <mvc:view-controller path="/angularIndex.html" view-name="/angularjs/angularindex"/>
-    <mvc:view-controller path="/angularjson.html" view-name="/angularjs/angularjson"/>
-    <mvc:view-controller path="/expressions.html" view-name="/angularjs/expressions"/>
-    <mvc:view-controller path="/ng-bind-model.html" view-name="/angularjs/ng-bind-model"/>
-    <mvc:view-controller path="/ng-class.html" view-name="/angularjs/ng-class"/>
-    <mvc:view-controller path="/ng-click-show.html" view-name="/angularjs/ng-click-show"/>
-    <mvc:view-controller path="/ng-if-switch.html" view-name="/angularjs/ng-if-switch"/>
-    <mvc:view-controller path="/ng-init.html" view-name="/angularjs/ng-init"/>
-    <mvc:view-controller path="/ng-repeat.html" view-name="/angularjs/ng-repeat"/>
-    <mvc:view-controller path="/two-way-binding.html" view-name="/angularjs/two-way-binding"/>
-    <mvc:view-controller path="/angularDI.html" view-name="/angularjs/angularDI"/>
-    <mvc:view-controller path="/ng-controller.html" view-name="/angularjs/ng-controller"/>
-    <mvc:view-controller path="/angularfilters.html" view-name="/angularjs/filters"/>
-    <mvc:view-controller path="/angularvalidation.html" view-name="/angularjs/validation"/>
-    <mvc:view-controller path="/angularrouting.html" view-name="/angularjs/routing"/>
-    <mvc:view-controller path="/angularhttpresource.html" view-name="/angularjs/httpresource"/>
-    <mvc:view-controller path="/customdirective.html" view-name="/angularjs/customdirective"/>
-    <mvc:view-controller path="/html5.html" view-name="/html5/html5"/>
 
 
     <!-- Static Resources Configuration (get access to static sources such as CSS and JavaScript files) -->
