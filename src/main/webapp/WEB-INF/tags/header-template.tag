@@ -12,37 +12,6 @@
 <c:url value="/accordorder.html" var="accordorder"/>
 <c:url value="/security/admin.html" var="admin" />
 
-<c:url value="/file.html" var="file"/>
-<c:url value="/jdbc.html" var="jdbc"/>
-<c:url value="/email.html" var="email" />
-<c:url value="/rest.html" var="rest" />
-<c:url value="/orm.html" var="orm" />
-<c:url value="/runtimeException.html" var="runtimeException" />
-<c:url value="/jstl.html" var="jstl" />
-<c:url value="/redirectExample" var="redirectExample" />
-<c:url value="/scope.html" var="scope" />
-<c:url value="/cookie.html" var="cookieView" />
-<c:url value="/security.html" var="security" />
-
-<c:url value="/html5.html" var="html5" />
-
-<c:url value="/angularIndex.html" var="angularIndex" />
-<c:url value="/angularjson.html" var="angularjson" />
-<c:url value="/expressions.html" var="expressions" />
-<c:url value="/ng-bind-model.html" var="ngbindmodel" />
-<c:url value="/ng-class.html" var="ngclass" />
-<c:url value="/ng-click-show.html" var="ngclickshow" />
-<c:url value="/ng-if-switch.html" var="ngifswitch" />
-<c:url value="/ng-init.html" var="nginit" />
-<c:url value="/ng-repeat.html" var="ngrepeat" />
-<c:url value="/two-way-binding.html" var="twowaybinding" />
-<c:url value="/angularDI.html" var="angularDI" />
-<c:url value="/ng-controller.html" var="ngcontroller" />
-<c:url value="/angularfilters.html" var="angularfilters" />
-<c:url value="/angularvalidation.html" var="angularvalidation" />
-<c:url value="/angularrouting.html" var="angularrouting" />
-<c:url value="/angularhttpresource.html" var="angularhttpresource" />
-<c:url value="/customdirective.html" var="customdirective" />
 
 
 <!-- Navigation -->
@@ -83,7 +52,7 @@
                     <li> <a style="color: red;" href="<c:url value="/j_spring_security_logout"/>"><spring:message code="navMenu.logout"/></a> </li>
                 </c:if>
 
-                <c:url value="/about.html" var="about"/>
+
 
                 <%--добавляет пунк в верхнем меню--%>
                 <li class="dropdown">
