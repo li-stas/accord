@@ -103,11 +103,11 @@
         <mvc:resources mapping="/resources/**" location="/resources/themeGreen" />
      -->
 
-    <mvc:interceptors>
+    <!--<mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/interceptorCall/*"/>
-            <!--need to use ' /** ' not ' /* ' if you want to intercept all requests.-->
-            <!--<mvc:mapping path="/**"/>-->
+            &lt;!&ndash;need to use ' /** ' not ' /* ' if you want to intercept all requests.&ndash;&gt;
+            &lt;!&ndash;<mvc:mapping path="/**"/>&ndash;&gt;
             <bean class="ru.javastudy.mvcHtml5Angular.mvc.interceptors.SiteInterceptor"/>
         </mvc:interceptor>
 
@@ -117,7 +117,7 @@
                 <property name="paramName" value="languageVar" />
             </bean>
         </mvc:interceptor>
-    </mvc:interceptors>
+    </mvc:interceptors>-->
 
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
         <property name="defaultLocale" value="ru" />
