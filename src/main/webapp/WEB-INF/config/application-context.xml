@@ -74,9 +74,9 @@
 
     <!--Do not forget activate @Transactional JPA annotation with <annotation-driven/>-->
     <!-- JPA Persistence Context and EntityManager configuration -->
-    <bean id="entityManagerFactory"
+    <!--<bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <!--packagesToScan - search Entity and mapping them -->
+        &lt;!&ndash;packagesToScan - search Entity and mapping them &ndash;&gt;
         <property name="packagesToScan">
             <list>
                 <value>ru.javastudy.mvcHtml5Angular.mvc.bean</value>
@@ -98,12 +98,12 @@
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
         </property>
-    </bean>
+    </bean>-->
 
     <!-- Automatic Transaction Participation-->
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+   <!-- <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
-    </bean>
+    </bean>-->
 
     <!--not uses but could autowired in JDBCExample bean-->
     <!--     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
@@ -115,36 +115,37 @@
     <task:annotation-driven/>
 
     <!-- Quartz simple trigger -->
-    <bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+   <!-- <bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
         <property name="jobDetail" ref="simpleQuartzJob"/>
         <property name="repeatInterval" value="1000"/>
         <property name="startDelay" value="1000"/>
-    </bean>
+    </bean>-->
     <!-- Quartz cron trigger -->
-    <bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <!--<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="quartzCronJob"/>
         <property name="cronExpression" value="0/30 * * * * ?"/>
-        <!-- every 30 seconds (seconds, minutes, hours, day of month, month, day of week, year(optional)) -->
-    </bean>
+        &lt;!&ndash; every 30 seconds (seconds, minutes, hours, day of month, month, day of week, year(optional)) &ndash;&gt;
+    </bean>-->
 
     <!-- Quartz job -->
-    <bean id="simpleQuartzJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <!--<bean id="simpleQuartzJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject" ref="simpleQuartzTask"/>
         <property name="targetMethod" value="simpleTaskMethod"/>
-    </bean>
+    </bean>-->
     <!-- Quartz cron job -->
-    <bean id="quartzCronJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+  <!--  <bean id="quartzCronJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject" ref="cronQuartzTask"/>
         <property name="targetMethod" value="cronTaskMethod"/>
-    </bean>
+    </bean>-->
 
     <!-- Quartz simple task -->
-    <bean id="simpleQuartzTask" class="ru.javastudy.mvcHtml5Angular.mvc.quartz.QuartzTask"/>
+   <!-- <bean id="simpleQuartzTask" class="ru.javastudy.mvcHtml5Angular.mvc.quartz.QuartzTask"/>-->
 
     <!-- Quartz cron task -->
-    <bean id="cronQuartzTask" class="ru.javastudy.mvcHtml5Angular.mvc.quartz.CronQuartzTask"/>
+   <!-- <bean id="cronQuartzTask" class="ru.javastudy.mvcHtml5Angular.mvc.quartz.CronQuartzTask"/>-->
 
     <!-- Quartz Scheduler -->
+<!--
     <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="jobDetails">
             <list>
@@ -159,6 +160,7 @@
             </list>
         </property>
     </bean>
+-->
 
     <!-- ScheduleTask example. Use
     <context:component-scan base-package="ru.javastudy.mvcHtml5Angular.mvc.scheduling"/>
