@@ -26,7 +26,7 @@
         <property name="resourceRef" value="true"/>
     </bean>
     <!-- Accord XML Bean Definitions -->
-    <bean id="OradataAccordSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <bean id="oradataAccordSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.oracle.driverClass}"/>
         <property name="url" value="${jdbc.oracle.url}"/>
         <property name="username" value="${jdbc.oracle.username}"/>
