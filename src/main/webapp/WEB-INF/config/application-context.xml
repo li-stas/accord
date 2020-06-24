@@ -41,7 +41,7 @@
         <property name="password" value="${jdbc.hsqldb.password}"/>
     </bean>
 
-    <!-- initialize Embedded DataSource. Встроенная база данных-->
+    <!-- initialize Embedded DataSource.  Встроенная база данных-->
     <!-- https://docs.spring.io/spring/docs/3.0.0.RC2/spring-framework-reference/html/ch12s09.html -->
     <jdbc:initialize-database data-source="dataSource">
         <jdbc:script location="classpath:dbschema.sql"/>
