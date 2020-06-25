@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * струкутура с избыточными данными. повторяется шапка в каждой строке товара
@@ -117,7 +118,19 @@ public  class DBAccordOrderRs1 implements Serializable {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DBAccordOrderRs1 that = (DBAccordOrderRs1) o;
+        return ttn == that.ttn &&
+                Objects.equals(dvp, that.dvp);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(ttn, dvp);
+    }
 }
 
 

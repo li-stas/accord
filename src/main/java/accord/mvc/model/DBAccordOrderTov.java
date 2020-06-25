@@ -1,5 +1,7 @@
 package accord.mvc.model;
 
+import java.util.Objects;
+
 public class DBAccordOrderTov {
     private int mnTov; //NUMERIC(7) NOT NuLL,
     private String nat; // VARCHAR(90) NOT NuLL,
@@ -60,5 +62,18 @@ public class DBAccordOrderTov {
                 ", nei='" + nei + '\'' +
                 ", cenPr=" + cenPr +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DBAccordOrderTov that = (DBAccordOrderTov) o;
+        return mnTov == that.mnTov;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mnTov);
     }
 }
