@@ -3,9 +3,13 @@ package accord.mvc.service;
 import accord.mvc.model.DBAccordOrderRs2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 
 @Service
 public class JBDCAccordDAORs2Imp implements JBDCAccordDAORs2 {
@@ -64,5 +68,28 @@ public class JBDCAccordDAORs2Imp implements JBDCAccordDAORs2 {
         } else {
             return result;
         }
+    }
+
+    @Override
+    public List<DBAccordOrderRs2> findRs2ByTtn(int numTtn) {
+        System.out.println("DBAccordOrderdService queryOrderRs2() is called");
+        final String querySQL =
+                "SELECT rs2.MnTov, tov.Nat, kvp, Zen"
+                        + " FROM AO_RS2 rs2, AO_TOV tov"
+                        + " WHERE rs2.MnTov = tov.MnTov and ttn = " + numTtn
+                        + " ORDER BY tov.Nat";
+        List<DBAccordOrderRs2> listRs2
+                = jdbcTemplate.query(querySQL, new RowMapper<DBAccordOrderRs2>() {
+            @Override
+            public DBAccordOrderRs2 mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+                DBAccordOrderRs2 recordRs2 = new DBAccordOrderRs2();
+                recordRs2.setMnTov(resultSet.getInt("MNTOV"));
+                recordRs2.setNat(resultSet.getString("NAT"));
+                recordRs2.setKvp(resultSet.getFloat("KVP"));
+                recordRs2.setZen(resultSet.getFloat("ZEN"));
+                return recordRs2;
+            }
+        });
+        return listRs2;
     }
 }

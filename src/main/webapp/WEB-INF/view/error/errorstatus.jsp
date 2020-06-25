@@ -27,19 +27,7 @@
             </div>
             <!-- /.row -->
 
-            <c:url value="/about.html" var="about"/>
-            <c:url value="/file.html" var="file"/>
-            <c:url value="/jdbc.html" var="jdbc"/>
-            <c:url value="/email.html" var="email"/>
-            <c:url value="/rest.html" var="rest" />
-            <c:url value="/orm.html" var="orm" />
-            <c:url value="/runtimeException.html" var="runtimeException" />
-            <c:url value="/jstl.html" var="jstl" />
-            <c:url value="/scope.html" var="scope" />
-            <c:url value="/cookie.html" var="cookie" />
             <c:url value="/security.html" var="security" />
-            <c:url value="/angularjson.html" var="angularjson" />
-            <c:url value="/expressions.html" var="expressions" />
 
             <div class="row">
 
@@ -53,51 +41,10 @@
                                 <a href="/">Home</a>
                             </li>
                             <li>
-                                <a href="${about}">About</a>
-                            </li>
-                            <li>
-                                Tutorial
+                                Security
                                 <ul>
-                                    <li>
-                                        <a href="${file}">Загрузка файла PDF и Excel</a>
-                                    </li>
-                                    <li>
-                                        <a href="${jdbc}">JDBC c JDBCTemplates</a>
-                                    </li>
-                                    <li>
-                                        <a href="${email}">Java Email API and Spring Mail</a>
-                                    </li>
-                                    <li>
-                                        <a href="${rest}">Rest Services (JSON and XML)</a>
-                                    </li>
-                                    <li>
-                                        <a href="${orm}">Spring MVC и Hibernate 5</a>
-                                    </li>
-                                    <li>
-                                        <a href="${runtimeException}">Runtime Exception</a>
-                                    </li>
-                                    <li>
-                                        <a href="${jstl}">JSTL Example</a>
-                                    </li>
-                                    <li>
-                                        <a href="${scope}">Session Object Example</a>
-                                    </li>
-                                    <li>
-                                        <a href="${cookie}">Работа с cookie</a>
-                                    </li>
                                     <li>
                                         <a href="${security}">Spring Security</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="/angularIndex.html">AngularJS</a>
-                                <ul>
-                                    <li>
-                                        <a href="${angularjson}">JavaScript Object Notation .stringify</a>
-                                    </li>
-                                    <li>
-                                        <a href="${expressions}">AngularJS Expressions</a>
                                     </li>
                                 </ul>
                             </li>

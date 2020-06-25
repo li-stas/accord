@@ -14,8 +14,10 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Repository
-public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1  {
+public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1 {
 
+    @Autowired
+    private JBDCAccordDAORs2 dbAccordDAORs2;
     private final JdbcTemplate jdbcTemplate;
 
     @Autowired
@@ -34,8 +36,13 @@ public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1  {
     }
 
     private DBAccordOrderRs1 getDbAccordOrderRs1(String querySQL) {
-        List<DBAccordOrderRs1> dbAccordOrderRs2 =
-                jdbcTemplate.query(querySQL, new RowMapper<DBAccordOrderRs1>() {
+        List<DBAccordOrderRs1> dbAccordOrderRs2 = getDbAccordOrderRs1s(querySQL);
+        return dbAccordOrderRs2.get(0);
+    }
+
+    @Override
+    public List<DBAccordOrderRs1> getDbAccordOrderRs1s(String querySQL) {
+        return jdbcTemplate.query(querySQL, new RowMapper<DBAccordOrderRs1>() {
             @Override
             public DBAccordOrderRs1 mapRow(ResultSet resultSet, int rowNum) throws SQLException {
                 DBAccordOrderRs1 recordRs1 = new DBAccordOrderRs1();
@@ -45,14 +52,14 @@ public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1  {
                 recordRs1.setNtMesto(resultSet.getString("NTMESTO"));
                 recordRs1.setKta(resultSet.getInt("KTA"));
 
-                List<DBAccordOrderRs2> listRs2 = findRs2ByTtn(resultSet.getInt("TTN"));
+                List<DBAccordOrderRs2> listRs2 = dbAccordDAORs2.findRs2ByTtn(resultSet.getInt("TTN"));
                 System.out.println("listRs2 = " + listRs2);
                 recordRs1.setListRs2(listRs2);
                 return recordRs1;
             }
         });
-        return dbAccordOrderRs2.get(0);
     }
+
 
     @Override
     public int save(DBAccordOrderRs1 orderRs1) {
@@ -62,8 +69,8 @@ public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1  {
 
         final String INSERT_SQL = "INSERT INTO ao_rs1 (ttn, DVP, TMesto, kta, prZ) VALUES (?, ?, ?, ?, ?)";
         int result = jdbcTemplate.update(INSERT_SQL,
-                  orderRs1.getTtn(),
-                  Timestamp.valueOf(orderRs1.getDvp()), orderRs1.getTMesto(), orderRs1.getKta(),
+                orderRs1.getTtn(),
+                Timestamp.valueOf(orderRs1.getDvp()), orderRs1.getTMesto(), orderRs1.getKta(),
                 orderRs1.getPrz());
         if (result > 0) {
             System.out.println("numTtn is update: " + orderRs1.getTtn());
@@ -104,23 +111,6 @@ public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1  {
         }
     }
 
-    @Override
-    public List<DBAccordOrderRs2> findRs2ByTtn(int numTtn) {
-        System.out.println("DBAccordOrderdService queryOrderRs2() is called");
-        final String querySQL = "SELECT MnTov, kvp, Zen FROM AO_RS2 rs2 WHERE  ttn =" + numTtn;
-        List<DBAccordOrderRs2> listRs2
-                = jdbcTemplate.query(querySQL, new RowMapper<DBAccordOrderRs2>() {
-            @Override
-            public DBAccordOrderRs2 mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-                DBAccordOrderRs2 recordRs2 = new DBAccordOrderRs2();
-                recordRs2.setMnTov(resultSet.getInt("MNTOV"));
-                recordRs2.setKvp(resultSet.getFloat("KVP"));
-                recordRs2.setZen(resultSet.getFloat("ZEN"));
-                return recordRs2;
-            }
-        });
-        return listRs2;
-    }
 
     @Override
     public List<DBAccordOrderRs1> findAll() {
@@ -130,12 +120,35 @@ public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1  {
     private Integer getSequence(String aoSqRs1) {
         Integer seq;
         String sql = "SELECT " + aoSqRs1 + ".NEXTVAL FROM dual";
-        seq = jdbcTemplate.queryForObject(sql, new Object[] {}, Integer.class);
+        seq = jdbcTemplate.queryForObject(sql, new Object[]{}, Integer.class);
        /* String sql = "SELECT ?.NEXTVAL FROM dual";
         seq = jdbcTemplate.queryForObject(sql, new Object[] {aoSqRs1}, Integer.class);*/
         return seq;
     }
 
+    /*
+    public List<DBAccordOrderRs2> findRs2ByTtn(int numTtn) {
+        System.out.println("DBAccordOrderdService queryOrderRs2() is called");
+        final String querySQL =
+                "SELECT rs2.MnTov, tov.Nat, kvp, Zen"
+                        + " FROM AO_RS2 rs2, AO_TOV tov"
+                        + " WHERE rs2.MnTov = tov.MnTov and ttn = " + numTtn
+                        + " ORDER BY tov.Nat";
+        List<DBAccordOrderRs2> listRs2
+                = jdbcTemplate.query(querySQL, new RowMapper<DBAccordOrderRs2>() {
+            @Override
+            public DBAccordOrderRs2 mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+                DBAccordOrderRs2 recordRs2 = new DBAccordOrderRs2();
+                recordRs2.setMnTov(resultSet.getInt("MNTOV"));
+                recordRs2.setNat(resultSet.getString("NAT"));
+                recordRs2.setKvp(resultSet.getFloat("KVP"));
+                recordRs2.setZen(resultSet.getFloat("ZEN"));
+                return recordRs2;
+            }
+        });
+        return listRs2;
+    }
+     */
     /*
     Raw use of parameterized class 'BeanPropertyRowMapper'
     Unchecked assignment: 'org.springframework.jdbc.core.BeanPropertyRowMapper' to

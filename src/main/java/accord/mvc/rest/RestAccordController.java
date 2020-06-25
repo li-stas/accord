@@ -87,7 +87,7 @@ public class RestAccordController {
         int cntRec = 0;
 
         try {
-            cntRec = dbAccordOrderdService.queryOrderRs1Delete(numTtn);
+            cntRec = dbAccordDAORs1.delete(numTtn);
         } catch (Exception e) {
             status = 503;
             log.error(e.getMessage() + " Exception", e);

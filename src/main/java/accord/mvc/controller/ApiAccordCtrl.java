@@ -93,7 +93,7 @@ public class ApiAccordCtrl {
             @RequestParam(value = "numTtn", required = false) int numTtn) {
         System.out.printf("CTRL accordOrdDel- numTtn=%d\n", numTtn);
         boolean result = false;
-        if (dbAccordOrderdService.queryOrderRs1Delete(numTtn) > 0) {
+        if (dbAccordDAORs1.delete(numTtn) > 0) {
             result = true;
         }
         return new ModelAndView("/accord/order/apiorder01", "resultObject", result);

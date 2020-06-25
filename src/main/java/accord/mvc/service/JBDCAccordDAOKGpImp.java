@@ -25,9 +25,8 @@ public class JBDCAccordDAOKGpImp implements JBDCAccordDAOKGp {
         System.out.println("DBAccordOrderKGp findByKGp is called=" + numKGp);
         final String querySQL = "SELECT AO_kgp.* FROM AO_KGP WHERE  KGP = ?";
 
-        DBAccordOrderKGp oRec = jdbcTemplate.queryForObject(
+        return jdbcTemplate.queryForObject(
                 querySQL, new Object[]{numKGp}, new BeanPropertyRowMapper<>(DBAccordOrderKGp.class));
-        return oRec;
     }
 
     @Override
