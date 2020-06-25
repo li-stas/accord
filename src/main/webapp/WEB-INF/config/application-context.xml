@@ -21,17 +21,17 @@
 
 
     <!-- wls Accord XML Bean Definitions -->
-    <bean id="wlsdataAccordSource" class="org.springframework.jndi.JndiObjectFactoryBean" lazy-init="true">
+    <bean id="dataAccordSource" class="org.springframework.jndi.JndiObjectFactoryBean" lazy-init="true">
         <property name="jndiName" value="${jdbc.weblogic.jndiName}"/>
         <property name="resourceRef" value="true"/>
     </bean>
     <!-- Accord XML Bean Definitions -->
-    <bean id="dataAccordSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <!--<bean id="dataAccordSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.oracle.driverClass}"/>
         <property name="url" value="${jdbc.oracle.url}"/>
         <property name="username" value="${jdbc.oracle.username}"/>
         <property name="password" value="${jdbc.oracle.password}"/>
-    </bean>
+    </bean>-->
         <!-- XML Bean Definitions -->
     <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.hsqldb.driverClass}"/>
