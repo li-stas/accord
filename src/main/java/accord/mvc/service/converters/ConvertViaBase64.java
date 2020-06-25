@@ -1,6 +1,6 @@
 package accord.mvc.service.converters;
 
-import accord.mvc.accordorder.ApiAccordController;
+import accord.mvc.controller.ApiAccordCtrl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.Base64;
  */
 @Service
 public class ConvertViaBase64 {
-    private static final Logger log = LoggerFactory.getLogger(ApiAccordController.class);
+    private static final Logger log = LoggerFactory.getLogger(ApiAccordCtrl.class);
     public Object oStrDeCode64( String base64String) {
         final byte[] objToBytes = Base64.getDecoder().decode(base64String);
         ByteArrayInputStream bais = new ByteArrayInputStream(objToBytes);
