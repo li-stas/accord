@@ -6,6 +6,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * струкутура с избыточными данными. повторяется шапка в каждой строке товара
@@ -93,5 +94,19 @@ public class DBAccordOrderRs1AndRs2 {
                 ", kvp=" + kvp +
                 ", zen=" + zen +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DBAccordOrderRs1AndRs2 that = (DBAccordOrderRs1AndRs2) o;
+        return ttn == that.ttn &&
+                Objects.equals(dvp, that.dvp);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ttn, dvp);
     }
 }

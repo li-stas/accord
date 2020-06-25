@@ -1,5 +1,7 @@
 package accord.mvc.model;
 
+import java.util.Objects;
+
 public class DBAccordOrderTMesto {
     private int tMesto; //NUMERIC(7) NOT NuLL,
     private int kPl; //NUMERIC(7) NOT NuLL,
@@ -49,5 +51,18 @@ public class DBAccordOrderTMesto {
                 ", kGp=" + kGp +
                 ", ntMesto='" + ntMesto + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DBAccordOrderTMesto that = (DBAccordOrderTMesto) o;
+        return tMesto == that.tMesto;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tMesto);
     }
 }

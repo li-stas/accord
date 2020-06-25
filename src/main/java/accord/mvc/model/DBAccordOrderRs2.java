@@ -3,6 +3,7 @@ package accord.mvc.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Objects;
 
 public class DBAccordOrderRs2 implements Serializable {
     // строки товар
@@ -79,5 +80,19 @@ public class DBAccordOrderRs2 implements Serializable {
                 ", zen=" + zen +
                 ", svp=" + svp +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DBAccordOrderRs2 that = (DBAccordOrderRs2) o;
+        return ttn == that.ttn &&
+                mnTov == that.mnTov;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ttn, mnTov);
     }
 }

@@ -1,6 +1,7 @@
 package accord.mvc.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class DBAccordOrdersJSONImpl  {
     private int status;
@@ -41,5 +42,19 @@ public class DBAccordOrdersJSONImpl  {
 
     public void setLastRec(int lastRec) {
         this.lastRec = lastRec;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DBAccordOrdersJSONImpl that = (DBAccordOrdersJSONImpl) o;
+        return status == that.status &&
+                lastRec == that.lastRec;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(status, lastRec);
     }
 }
