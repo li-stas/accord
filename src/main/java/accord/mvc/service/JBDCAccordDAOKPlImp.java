@@ -26,9 +26,8 @@ public class JBDCAccordDAOKPlImp implements JBDCAccordDAOKPl {
         System.out.println("DBAccordOrderKPl findByKPl is called");
         final String querySQL = "SELECT * FROM AO_KPl WHERE  KKL = ?";
 
-        DBAccordOrderKPl oRec = jdbcTemplate.queryForObject(
+        return jdbcTemplate.queryForObject(
                 querySQL, new Object[]{numKPl}, new BeanPropertyRowMapper<>(DBAccordOrderKPl.class));
-        return oRec;
     }
 
     public List<DBAccordOrderKPl> selectStartsWith(int numKta, String name) {

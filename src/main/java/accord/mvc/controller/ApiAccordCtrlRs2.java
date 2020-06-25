@@ -24,8 +24,6 @@ public class ApiAccordCtrlRs2 {
     private  JBDCAccordDAORs2 dbAccordDAORs2;
     @Autowired
     private JBDCAccordDAOTov dbAccordDAOTov;
-    @Autowired
-    private DBAccordOrderdService dbAccordOrderdService;
 
     @RequestMapping(value = "/accordOrdViewRs2", method = RequestMethod.POST)
     public ModelAndView accordOrdViewRs2(
@@ -34,7 +32,7 @@ public class ApiAccordCtrlRs2 {
 
         List<String> aHead =
                 Arrays.asList("Код товара", "Наименование товара", "К-во", "Цена", "Сумма, грн", "Изменить", "Удалить");
-        List<DBAccordOrderRs2> dbAccordOrderRs2List = dbAccordOrderdService.queryOrderRs2(numTtn);
+        List<DBAccordOrderRs2> dbAccordOrderRs2List = dbAccordDAORs2.findRs2ByTtn(numTtn);
 
         final ModelAndView mv = new ModelAndView("/accord/order/apiorderrs2");
         mv.addObject("resultObject", "rs2");

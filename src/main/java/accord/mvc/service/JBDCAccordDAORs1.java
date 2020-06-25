@@ -10,6 +10,6 @@ public interface JBDCAccordDAORs1 {
     int save(DBAccordOrderRs1 orderRs1);
     int update(DBAccordOrderRs1 orderRs1);
     int delete(int ttn);
-    List<DBAccordOrderRs2> findRs2ByTtn(int ttn);
     List<DBAccordOrderRs1> findAll();
+    List<DBAccordOrderRs1> getDbAccordOrderRs1s(String querySQL);
 }
