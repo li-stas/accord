@@ -1,4 +1,4 @@
-package accord.mvc.accordorder;
+package accord.mvc.controller;
 
 import accord.mvc.model.DBAccordOrderRs2;
 import accord.mvc.model.DBAccordOrderTov;
