@@ -47,11 +47,13 @@ public class DBAccordOrderKGp {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DBAccordOrderKGp that = (DBAccordOrderKGp) o;
-        return kGp == that.kGp;
+        return kGp == that.kGp &&
+                Objects.equals(nGrpol, that.nGrpol) &&
+                Objects.equals(adr, that.adr);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(kGp);
+        return Objects.hash(kGp, nGrpol, adr);
     }
 }

@@ -102,11 +102,16 @@ public class DBAccordOrderRs1AndRs2 {
         if (o == null || getClass() != o.getClass()) return false;
         DBAccordOrderRs1AndRs2 that = (DBAccordOrderRs1AndRs2) o;
         return ttn == that.ttn &&
+                tMesto == that.tMesto &&
+                kta == that.kta &&
+                mnTov == that.mnTov &&
+                Float.compare(that.kvp, kvp) == 0 &&
+                Float.compare(that.zen, zen) == 0 &&
                 Objects.equals(dvp, that.dvp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ttn, dvp);
+        return Objects.hash(ttn, dvp, tMesto, kta, mnTov, kvp, zen);
     }
 }

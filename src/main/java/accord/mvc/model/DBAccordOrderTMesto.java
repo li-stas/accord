@@ -58,11 +58,14 @@ public class DBAccordOrderTMesto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DBAccordOrderTMesto that = (DBAccordOrderTMesto) o;
-        return tMesto == that.tMesto;
+        return tMesto == that.tMesto &&
+                kPl == that.kPl &&
+                kGp == that.kGp &&
+                Objects.equals(ntMesto, that.ntMesto);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tMesto);
+        return Objects.hash(tMesto, kPl, kGp, ntMesto);
     }
 }
