@@ -124,12 +124,18 @@ public  class DBAccordOrderRs1 implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         DBAccordOrderRs1 that = (DBAccordOrderRs1) o;
         return ttn == that.ttn &&
-                Objects.equals(dvp, that.dvp);
+                Double.compare(that.sdv, sdv) == 0 &&
+                tMesto == that.tMesto &&
+                kta == that.kta &&
+                prz == that.prz &&
+                Objects.equals(dvp, that.dvp) &&
+                Objects.equals(ntMesto, that.ntMesto) &&
+                Objects.equals(listRs2, that.listRs2);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ttn, dvp);
+        return Objects.hash(ttn, dvp, sdv, tMesto, ntMesto, kta, prz, listRs2);
     }
 }
 

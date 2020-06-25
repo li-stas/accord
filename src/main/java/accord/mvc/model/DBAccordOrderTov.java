@@ -69,11 +69,15 @@ public class DBAccordOrderTov {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DBAccordOrderTov that = (DBAccordOrderTov) o;
-        return mnTov == that.mnTov;
+        return mnTov == that.mnTov &&
+                Double.compare(that.osFo, osFo) == 0 &&
+                Double.compare(that.cenPr, cenPr) == 0 &&
+                Objects.equals(nat, that.nat) &&
+                Objects.equals(nei, that.nei);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mnTov);
+        return Objects.hash(mnTov, nat, osFo, nei, cenPr);
     }
 }

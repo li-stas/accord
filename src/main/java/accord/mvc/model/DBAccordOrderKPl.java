@@ -48,11 +48,13 @@ public class DBAccordOrderKPl {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DBAccordOrderKPl that = (DBAccordOrderKPl) o;
-        return kKL == that.kKL;
+        return kKL == that.kKL &&
+                Objects.equals(nKL, that.nKL) &&
+                Objects.equals(adr, that.adr);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(kKL);
+        return Objects.hash(kKL, nKL, adr);
     }
 }

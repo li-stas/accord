@@ -50,11 +50,12 @@ public class DBAccordOrdersJSONImpl  {
         if (o == null || getClass() != o.getClass()) return false;
         DBAccordOrdersJSONImpl that = (DBAccordOrdersJSONImpl) o;
         return status == that.status &&
-                lastRec == that.lastRec;
+                lastRec == that.lastRec &&
+                Objects.equals(orderList, that.orderList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(status, lastRec);
+        return Objects.hash(status, lastRec, orderList);
     }
 }

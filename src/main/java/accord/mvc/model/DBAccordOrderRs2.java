@@ -89,11 +89,15 @@ public class DBAccordOrderRs2 implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         DBAccordOrderRs2 that = (DBAccordOrderRs2) o;
         return ttn == that.ttn &&
-                mnTov == that.mnTov;
+                mnTov == that.mnTov &&
+                Double.compare(that.kvp, kvp) == 0 &&
+                Double.compare(that.zen, zen) == 0 &&
+                Double.compare(that.svp, svp) == 0 &&
+                Objects.equals(nat, that.nat);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ttn, mnTov);
+        return Objects.hash(ttn, mnTov, nat, kvp, zen, svp);
     }
 }
