@@ -21,7 +21,7 @@ public class ApiAccordCtrlRs2 {
     private static final Logger log = LoggerFactory.getLogger(ApiAccordCtrlRs2.class);
 
     @Autowired
-    private JBDCAccordDAORs2 dbAccordDAORs2;
+    private  JBDCAccordDAORs2 dbAccordDAORs2;
     @Autowired
     private JBDCAccordDAOTov dbAccordDAOTov;
     @Autowired

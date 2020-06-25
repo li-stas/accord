@@ -16,7 +16,7 @@ import java.util.List;
 @Repository
 public class JBDCAccordDAORs1Imp implements JBDCAccordDAORs1  {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public JBDCAccordDAORs1Imp(DataSource dataAccordSource) {

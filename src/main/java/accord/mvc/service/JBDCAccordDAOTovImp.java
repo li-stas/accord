@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class JBDCAccordDAOTovImp implements JBDCAccordDAOTov {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public JBDCAccordDAOTovImp(DataSource dataAccordSource) {
