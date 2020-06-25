@@ -21,35 +21,34 @@
 
 
     <!-- wls Accord XML Bean Definitions -->
-    <bean id="dataAccordSource" class="org.springframework.jndi.JndiObjectFactoryBean" lazy-init="true">
+    <bean id="wlsdataAccordSource" class="org.springframework.jndi.JndiObjectFactoryBean" lazy-init="true">
         <property name="jndiName" value="${jdbc.weblogic.jndiName}"/>
         <property name="resourceRef" value="true"/>
     </bean>
     <!-- Accord XML Bean Definitions -->
-    <bean id="oradataAccordSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <bean id="dataAccordSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.oracle.driverClass}"/>
         <property name="url" value="${jdbc.oracle.url}"/>
         <property name="username" value="${jdbc.oracle.username}"/>
         <property name="password" value="${jdbc.oracle.password}"/>
     </bean>
-
         <!-- XML Bean Definitions -->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.hsqldb.driverClass}"/>
         <property name="url" value="${jdbc.hsqldb.url}"/>
         <property name="username" value="${jdbc.hsqldb.username}"/>
         <property name="password" value="${jdbc.hsqldb.password}"/>
     </bean>
-
+-->
     <!-- initialize Embedded DataSource.  Встроенная база данных-->
     <!-- https://docs.spring.io/spring/docs/3.0.0.RC2/spring-framework-reference/html/ch12s09.html -->
-    <jdbc:initialize-database data-source="dataSource">
+   <!-- <jdbc:initialize-database data-source="dataSource">
         <jdbc:script location="classpath:dbschema.sql"/>
         <jdbc:script location="classpath:test-data.sql"/>
-    </jdbc:initialize-database>
+    </jdbc:initialize-database>-->
 
     <!-- Java Mail Configuration -->
-    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+   <!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="username" value="${java.mail.username}"/>
         <property name="password" value="${java.mail.password}"/>
         <property name="port" value="465"/>
@@ -62,13 +61,13 @@
                 <prop key="mail.smtp.host">${java.mail.host}</prop>
             </props>
         </property>
-    </bean>
+    </bean>-->
 
     <!-- Velocity Email Template Config Bean -->
-    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+  <!--  <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
         <property name="resourceLoaderPath" value="/WEB-INF/email-templates/"/>
     </bean>
-
+-->
     <!-- REST template configuration -->
     <bean id="restTemplate" class="org.springframework.web.client.RestTemplate"/>
 
