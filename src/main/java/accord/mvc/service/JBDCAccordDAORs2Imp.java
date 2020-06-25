@@ -9,7 +9,7 @@ import javax.sql.DataSource;
 
 @Service
 public class JBDCAccordDAORs2Imp implements JBDCAccordDAORs2 {
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public JBDCAccordDAORs2Imp(DataSource dataAccordSource) {

@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 
 @Repository
 public class JBDCAccordDAOTMestoImp implements JBDCAccordDAOTMesto {
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public JBDCAccordDAOTMestoImp(DataSource dataAccordSource) {

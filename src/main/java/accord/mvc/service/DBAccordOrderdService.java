@@ -19,7 +19,7 @@ public class DBAccordOrderdService {
     private EntityManager entityManager;*/
 
     /* or you can use JDBCTemplate instead JPA */
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public DBAccordOrderdService(DataSource dataAccordSource) {

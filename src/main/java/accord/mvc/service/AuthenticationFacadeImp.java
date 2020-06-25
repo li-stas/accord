@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 public class AuthenticationFacadeImp implements AuthenticationFacade {
     private Integer numKta;
     private String userName;
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public AuthenticationFacadeImp(DataSource dataAccordSource) {

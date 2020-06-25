@@ -14,7 +14,7 @@ import java.util.List;
 
 @Repository
 public class JBDCAccordDAOKPlImp implements JBDCAccordDAOKPl {
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public JBDCAccordDAOKPlImp(DataSource dataAccordSource) {
