@@ -6,6 +6,7 @@ import java.math.RoundingMode;
 import java.util.Objects;
 
 public class DBAccordOrderRs2 implements Serializable {
+    //private static final long serialVersionUID = 12345678L;
     // строки товар
     private int ttn;
     private int mnTov;
