@@ -27,7 +27,7 @@
             </div>
             <!-- /.row -->
 
-            <c:url value="/security.html" var="security" />
+            <c:url value="/security.html" var="security"/>
 
             <div class="row">
 
